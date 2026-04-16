@@ -1542,6 +1542,7 @@ const IMGS = window.IMGS || {};
   let estadoChat = {};
   let meuCarrinho = JSON.parse(localStorage.getItem("cg_carrinho")) || [];
   let pedidoAtual = {};
+  let toqueMenuLateral = null;
 
 // Wireframe Animation
         const canvas = document.getElementById('wireframeCanvas');
@@ -1633,6 +1634,46 @@ const IMGS = window.IMGS || {};
 
   function telaMobileAtiva() {
     return window.matchMedia("(max-width: 768px)").matches;
+  }
+
+  function atualizarBotaoWhatsappTopo() {
+    const btnWhatsappTopo = document.getElementById("btn-wpp");
+    const linkWhatsapp = obterWhatsappLink();
+    if (!btnWhatsappTopo || !linkWhatsapp) return;
+    btnWhatsappTopo.href = `https://wa.me/${linkWhatsapp}`;
+  }
+
+  function inicializarGestoMenuMobile() {
+    const principal = document.getElementById("principal");
+    if (!principal || principal.dataset.gestoMenuInicializado === "true") return;
+
+    principal.dataset.gestoMenuInicializado = "true";
+
+    principal.addEventListener("touchstart", event => {
+      if (!telaMobileAtiva() || !document.body.classList.contains("chat-aberto")) return;
+      const toque = event.changedTouches && event.changedTouches[0];
+      if (!toque) return;
+
+      toqueMenuLateral = {
+        x: toque.clientX,
+        y: toque.clientY
+      };
+    }, { passive: true });
+
+    principal.addEventListener("touchend", event => {
+      if (!telaMobileAtiva() || !document.body.classList.contains("chat-aberto") || !toqueMenuLateral) return;
+      const toque = event.changedTouches && event.changedTouches[0];
+      if (!toque) return;
+
+      const deltaX = toque.clientX - toqueMenuLateral.x;
+      const deltaY = Math.abs(toque.clientY - toqueMenuLateral.y);
+      const iniciouNaBorda = toqueMenuLateral.x <= 70;
+      toqueMenuLateral = null;
+
+      if (iniciouNaBorda && deltaX > 90 && deltaY < 80) {
+        voltarMenu();
+      }
+    }, { passive: true });
   }
 
   function renderOpcoesSaboresChat(idProduto) {
@@ -2331,6 +2372,8 @@ const IMGS = window.IMGS || {};
   }
 
   window.onload = () => {
+    atualizarBotaoWhatsappTopo();
+    inicializarGestoMenuMobile();
     verificarUsuarioLogado();
     abrirPagina("home");
     window.addEventListener("resize", ajustarLayoutChatProduto);
