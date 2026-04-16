@@ -908,6 +908,229 @@
             border-top: 3px dashed rgba(232, 112, 10, 0.3);
         }
 
+        .checkout-extra-box {
+            margin-top: 28px;
+            padding: 24px;
+            border-radius: 20px;
+            border: 2px solid rgba(232, 112, 10, 0.2);
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.88) 0%, rgba(10, 10, 10, 0.95) 100%);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+        }
+
+        .checkout-extra-box h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            color: var(--laranja);
+            margin-bottom: 12px;
+        }
+
+        .checkout-extra-box p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .checkout-address-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .checkout-field-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .checkout-field-wrap-full {
+            grid-column: 1 / -1;
+        }
+
+        .checkout-field-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.86);
+            letter-spacing: 0.3px;
+        }
+
+        .checkout-field {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: 2px solid rgba(232, 112, 10, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-family: "DM Sans", sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-field::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .checkout-field:focus {
+            border-color: var(--laranja);
+            box-shadow: 0 0 0 4px rgba(232, 112, 10, 0.12);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .msg.sistema {
+            align-self: center;
+            max-width: 100%;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .msg img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin-top: 8px;
+        }
+
+        .msg-acoes {
+            display: grid;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .chat-opcao {
+            width: 100%;
+            text-align: left;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(232, 112, 10, 0.26);
+            background: linear-gradient(135deg, rgba(232, 112, 10, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        .chat-opcao:hover {
+            transform: translateY(-2px);
+            border-color: rgba(232, 112, 10, 0.5);
+            box-shadow: 0 10px 24px rgba(232, 112, 10, 0.18);
+        }
+
+        .chat-opcao strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #ffb15c;
+            font-size: 14px;
+        }
+
+        .chat-opcao span {
+            display: block;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .catalogo-info {
+            position: relative;
+            z-index: 1;
+        }
+
+        #principal.produto-chat-ativo #vitrine {
+            padding-bottom: 128px;
+        }
+
+        #principal.produto-chat-ativo #chat-area {
+            position: absolute;
+            left: 40px;
+            right: 40px;
+            bottom: 92px;
+            z-index: 2;
+            padding: 8px 0 12px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            pointer-events: auto;
+        }
+
+        #principal.produto-chat-ativo #chat-area .msg {
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        #principal.produto-chat-ativo #form-chat {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(10, 10, 10, 0.99) 100%);
+        }
+
+        .btn-foto {
+            background: transparent;
+            border: none;
+            color: var(--laranja);
+            font-size: 22px;
+            cursor: pointer;
+            padding: 6px;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-foto:hover {
+            transform: scale(1.08);
+        }
+
+        .prod-foto-zoom {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 999px;
+            padding: 10px 14px;
+            background: rgba(0, 0, 0, 0.72);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+        }
+
+        .imagem-modal-box {
+            background: transparent;
+            width: min(96vw, 1100px);
+            max-width: 1100px;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        .imagem-modal-conteudo {
+            position: relative;
+            padding: 16px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, rgba(18, 18, 18, 0.98) 0%, rgba(6, 6, 6, 1) 100%);
+            border: 1px solid rgba(232, 112, 10, 0.18);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+        }
+
+        .imagem-modal-conteudo img {
+            width: 100%;
+            max-height: 82vh;
+            object-fit: contain;
+            border-radius: 16px;
+            background: #050505;
+        }
+
+        .imagem-legenda {
+            margin-top: 12px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 13px;
+        }
+
         /* FAQ Cards */
         .faq-chat-grid {
             display: grid;
@@ -1021,6 +1244,20 @@
                 padding: 20px;
             }
 
+            .checkout-address-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #principal.produto-chat-ativo #vitrine {
+                padding-bottom: 120px;
+            }
+
+            #principal.produto-chat-ativo #chat-area {
+                left: 20px;
+                right: 20px;
+                bottom: 92px;
+            }
+
             .faq-chat-grid {
                 grid-template-columns: 1fr;
             }
@@ -1095,14 +1332,16 @@
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
                             <path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.014 22l4.982-1.404A9.954 9.954 0 0 0 12 21.999c5.523 0 10-4.477 10-10S17.522 2 11.999 2z"/>
                         </svg>
-                        Fale Conosco
+                        <span id="txt-wpp-btn">Fale Conosco</span>
                     </a>
-                    <button class="btn-login-icon" onclick="abrirModalLogin()">👤</button>
+                    <button id="btn-login-user" class="btn-login-icon" onclick="abrirModalLogin()" title="Fazer Login">👤</button>
                 </div>
             </div>
             <div id="vitrine"></div>
             <div id="chat-area" style="display:none;"></div>
             <form id="form-chat" onsubmit="enviarMensagem(event)" style="display:none;">
+                <input type="file" id="file-input" accept="image/*" style="display:none" onchange="enviarFoto(event)">
+                <button type="button" class="btn-foto" onclick="document.getElementById('file-input').click()" style="display:none;">📷</button>
                 <input id="input-msg" autocomplete="off" placeholder="Digite sua mensagem...">
                 <button type="submit" class="btn-enviar">Enviar</button>
             </form>
@@ -1142,40 +1381,88 @@
         </div>
     </div>
 
+    <div id="modal-imagem" class="modal-overlay" onclick="fecharModalImagem(event)">
+        <div class="modal-box imagem-modal-box">
+            <div class="imagem-modal-conteudo">
+                <button class="modal-fechar" onclick="fecharModal('modal-imagem')">×</button>
+                <img id="imagem-expandida" src="" alt="Imagem ampliada do produto">
+                <div id="imagem-legenda" class="imagem-legenda"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="imagens-base64.js"></script>
     <script>
-        const CONFIG = {
-            whatsapp: "68 9262-6612",
-            chave_pix: "68 9262-6612",
-            nomeAtendimento: "Assistente Petit Buffet"
-        };
+const IMGS = window.IMGS || {};
 
-        const PRODUTOS = {
-            hamburguer: { nome: "Hambúrguer Artesanal", icone: "🍔", desc: "Hambúrgueres gourmet preparados na hora com ingredientes selecionados.", valorTex: "R$ 6,00/un", minimoTex: "100 unidades", valorNum: 6.00, minNum: 100, tipo: "unidade" },
-            cachorroquente: { nome: "Cachorro Quente Gourmet", icone: "🌭", desc: "Cachorro quente especial com molhos artesanais e ingredientes premium.", valorTex: "R$ 6,00/un", minimoTex: "80 unidades", valorNum: 6.00, minNum: 80, tipo: "unidade" },
-            pipoca: { nome: "Pipoca Doce Colorida", icone: "🍿", desc: "Pipoca colorida e saborizada, perfeita para festas e eventos.", valorTex: "R$ 150,00 aluguel", minimoTex: "Sem Mínimo", valorNum: 150.00, minNum: 1, tipo: "fixo" },
-            picole: { nome: "Picolé Gourmet", icone: "🍦", desc: "Picolés artesanais com sabores incríveis e ingredientes naturais.", valorTex: "R$ 7,00/un", minimoTex: "60 unidades", valorNum: 7.00, minNum: 60, tipo: "unidade" },
-            algodao: { nome: "Algodão Doce", icone: "☁️", desc: "Algodão doce colorido feito na hora, encanta crianças e adultos.", valorTex: "R$ 7,00/un", minimoTex: "60 unidades", valorNum: 7.00, minNum: 60, tipo: "unidade" },
-            brigadeiro: { nome: "Brigadeiro no Tacho", icone: "🍫", desc: "Brigadeiro cremoso preparado na hora. Escolha 3 sabores diferentes.", valorTex: "A combinar", minimoTex: "Sem Mínimo", valorNum: 0, minNum: 1, tipo: "combinar" },
-            pizza: { nome: "Pizza Artesanal", icone: "🍕", desc: "Pizzas feitas na hora com massa artesanal e ingredientes frescos.", valorTex: "R$ 7,00/un", minimoTex: "60 unidades", valorNum: 7.00, minNum: 60, tipo: "unidade" },
-            sanduiche: { nome: "Sanduíche Natural", icone: "🥪", desc: "Sanduíches naturais com pão integral, proteínas e vegetais frescos.", valorTex: "R$ 10,00/un", minimoTex: "Sem Mínimo", valorNum: 10.00, minNum: 1, tipo: "unidade" },
-            empada: { nome: "Empadas Artesanais", icone: "🥐", desc: "Empadas com massa amanteigada e recheios generosos.", valorTex: "R$ 8,00/un", minimoTex: "Sem Mínimo", valorNum: 8.00, minNum: 1, tipo: "unidade" }
-        };
+  const CONFIG = {
+    whatsapp: "68 9262-6612",
+    chave_pix: "68 9262-6612",
+    url_google_script: "https://script.google.com/macros/s/AKfycbx5sl9-P8JGsnPYa7I8PdSYQAVIPAQ_lIpZUcPRqLzESEkzwVA61TKpxIN4yUmsRbKucw/exec",
+    nomeAtendimento: "Assistente Petiti Buffet",
+    mensagemBoasVindas: "Olá! Seja bem-vindo(a)! Como posso ajudar com o seu evento hoje?",
+    instagram: ""
+  };
 
-        const FAQ_HOME = [
-            { pergunta: "Como funciona o aluguel?", resposta: "O carrinho é GRÁTIS! Você só paga pelos alimentos. Levamos, montamos e deixamos tudo pronto." },
-            { pergunta: "Quem fica nos carrinhos?", resposta: "Nossa equipe cuida da organização e montagem. O atendimento pode ser alinhado no fechamento." },
-            { pergunta: "Qual o prazo?", resposta: "Pedimos aviso com pelo menos 4 dias antes do evento." },
-            { pergunta: "Como é o pagamento?", resposta: "Via PIX em duas partes: metade adiantado para reservar e metade no final do serviço." },
-            { pergunta: "Onde ficam?", resposta: "Rua Pricesinha, Belo Jardim 1. Temos mais de 4 anos de experiência!" },
-            { pergunta: "Formas de pagamento?", resposta: "Aceitamos somente PIX no momento." }
-        ];
+  const SABORES_SANDUICHE = [
+    {
+      id: "atum",
+      nome: "Sanduíche Natural de Atum",
+      descricao: "Leveza e nutrição. Patê cremoso de atum com maionese artesanal, alface crocante e tomate fresquinho no pão integral fofinho."
+    },
+    {
+      id: "frango",
+      nome: "Sanduíche Natural de Frango",
+      descricao: "Sabor e energia para o seu dia. Frango desfiado temperado com um toque de cenoura ralada, mix de folhas verdes e molho suave."
+    }
+  ];
 
-        let paginaAtual = "home";
-        let estadoChat = {};
-        let meuCarrinho = JSON.parse(localStorage.getItem("cg_carrinho")) || [];
-        let pedidoAtual = {};
+  const PRODUTOS = {
+    hamburguer: { nome: "Hambúrguer", icone: "🍔", imgKey: "hamburguer", desc: "Carrinho de hambúrgueres artesanais.", valorTex: "R$ 6,00 à unidade", minimoTex: "100 unidades", valorNum: 6.00, minNum: 100, tipo: "unidade" },
+    cachorroquente: { nome: "Cachorro Quente", icone: "🌭", imgKey: "cachorroquente", desc: "Carrinho de cachorro quente gourmet.", valorTex: "R$ 6,00 à unidade", minimoTex: "80 unidades", valorNum: 6.00, minNum: 80, tipo: "unidade" },
+    pipoca: { nome: "Pipoca Doce", icone: "🍿", imgKey: "pipoca", desc: "Carrinho de pipoca colorida e saborizada.", valorTex: "R$ 150,00 o aluguel + pipoca", minimoTex: "Sem Mínimo", valorNum: 150.00, minNum: 1, tipo: "fixo" },
+    picole: { nome: "Picolé Gourmet", icone: "🍦", imgKey: "picole", desc: "Carrinho de picolés gourmet artesanais.", valorTex: "R$ 7,00 à unidade", minimoTex: "60 unidades", valorNum: 7.00, minNum: 60, tipo: "unidade" },
+    algodao: { nome: "Algodão Doce", icone: "☁️", imgKey: "algodao", desc: "Carrinho de algodão doce colorido.", valorTex: "R$ 7,00 à unidade", minimoTex: "Mínimo: 60 unidades", valorNum: 7.00, minNum: 60, tipo: "unidade" },
+    brigadeiro: { nome: "Brigadeiro no Tacho", icone: "🍫", imgKey: "brigadeiro", desc: "Carrinho de brigadeiro saboroso. Preço único para qualquer combinação de 3 tipos.", valorTex: "A combinar", minimoTex: "Sem Mínimo", valorNum: 0, minNum: 1, tipo: "combinar" },
+    pizza: { nome: "Pizza no Evento", icone: "🍕", imgKey: "pizza", desc: "Carrinho de pizza artesanal preparada na hora.", valorTex: "R$ 7,00 à unidade", minimoTex: "60 unidades", valorNum: 7.00, minNum: 60, tipo: "unidade" },
+    sanduiche: { nome: "Sanduíche Natural", icone: "🥪", imgKey: "sanduiche", desc: "Preparados no dia com pão integral macio, proteínas magras, vegetais frescos e temperos especiais. Temos opções de atum e frango.", valorTex: "R$ 10,00 à unidade", minimoTex: "Sem Mínimo", valorNum: 10.00, minNum: 1, tipo: "unidade" },
+    empada: { nome: "Empadas Artesanais", icone: "🥐", imgKey: "empada", desc: "Massa que derrete na boca, feita com manteiga selecionada e recheios generosos.", valorTex: "R$ 8,00 à unidade", minimoTex: "Sem Mínimo", valorNum: 8.00, minNum: 1, tipo: "unidade" }
+  };
 
-        // Wireframe Animation
+
+  const FAQ_HOME = [
+    {
+      pergunta: "Como funciona o aluguel com carrinho?",
+      resposta: "O carrinho é de graça. Você não paga pelo aluguel do carrinho em si. Para ter o carrinho no evento, é obrigatório fechar a compra dos alimentos conosco. Nós levamos, montamos e deixamos tudo pronto para o atendimento."
+    },
+    {
+      pergunta: "Quem fica nos carrinhos distribuindo os alimentos?",
+      resposta: "Nossa equipe cuida da organização e da montagem. O formato exato do atendimento pode ser alinhado no fechamento do pedido para combinar certinho com o seu evento."
+    },
+    {
+      pergunta: "Tem algum prazo antes do evento?",
+      resposta: "Sim. Pedimos aviso com pelo menos 4 dias antes do evento para conseguir organizar os alimentos, separar o carrinho e deixar tudo preparado."
+    },
+    {
+      pergunta: "Como funciona o pagamento?",
+      resposta: "O pagamento é feito via PIX em duas partes: metade do valor total adiantado para reservar a data e a outra metade no final do serviço."
+    },
+    {
+      pergunta: "Quais formas de pagamento vocês aceitam?",
+      resposta: "No momento aceitamos somente PIX."
+    },
+    {
+      pergunta: "Onde vocês estão localizados e há quanto tempo trabalham com isso?",
+      resposta: "Estamos localizados na Rua Pricesinha, Belo Jardim 1, e já temos mais de 4 anos de experiência nessa área."
+    }
+  ];
+
+  let paginaAtual = "home";
+  let estadoChat = {};
+  let meuCarrinho = JSON.parse(localStorage.getItem("cg_carrinho")) || [];
+  let pedidoAtual = {};
+
+// Wireframe Animation
         const canvas = document.getElementById('wireframeCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -1252,403 +1539,706 @@
             particlesContainer.appendChild(particle);
         }
 
-        function verificarUsuarioLogado() {
-            const user = localStorage.getItem("cg_nomeUsuario");
-            if (user) {
-                const btnUser = document.querySelector(".btn-login-icon");
-                btnUser.innerHTML = user.charAt(0).toUpperCase();
-                btnUser.title = "Logado: " + user;
-                btnUser.style.background = "var(--laranja)";
-                btnUser.style.color = "white";
-            }
-            atualizarContadorCarrinho();
+  function obterEstadoChat(idProduto) {
+    if (!estadoChat[idProduto] || typeof estadoChat[idProduto] !== "object") {
+      estadoChat[idProduto] = { etapa: 0, saborId: "" };
+    }
+    return estadoChat[idProduto];
+  }
+
+  function obterSaborSanduiche(saborId) {
+    return SABORES_SANDUICHE.find(sabor => sabor.id === saborId);
+  }
+
+  function telaMobileAtiva() {
+    return window.matchMedia("(max-width: 768px)").matches;
+  }
+
+  function renderOpcoesSaboresChat(idProduto) {
+    return `
+      <div class="msg-acoes">
+        ${SABORES_SANDUICHE.map(sabor => `
+          <button type="button" class="chat-opcao" onclick="selecionarSaborSanduiche('${idProduto}', '${sabor.id}')">
+            <strong>${sabor.nome}</strong>
+            <span>${sabor.descricao}</span>
+          </button>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function verificarUsuarioLogado() {
+    const user = localStorage.getItem("cg_nomeUsuario");
+    if (user) {
+      const btnUser = document.getElementById("btn-login-user");
+      btnUser.innerHTML = user.charAt(0).toUpperCase();
+      btnUser.title = "Logado como " + user;
+      btnUser.style.background = "var(--laranja)";
+      btnUser.style.color = "white";
+    }
+    atualizarContadorCarrinho();
+  }
+
+  function abrirModalLogin() {
+    if (localStorage.getItem("cg_nomeUsuario")) {
+      if (confirm("Você já está logado como " + localStorage.getItem("cg_nomeUsuario") + ".\nDeseja sair (deslogar)?")) {
+        localStorage.removeItem("cg_nomeUsuario");
+        localStorage.removeItem("cg_telefoneUsuario");
+        localStorage.removeItem("cg_enderecoUsuario");
+        localStorage.removeItem("cg_enderecoEstruturado");
+        localStorage.removeItem("cg_observacaoPedido");
+        location.reload();
+      }
+      return;
+    }
+    document.getElementById("modal-login").classList.add("ativo");
+  }
+
+  function fecharModal(id) { document.getElementById(id).classList.remove("ativo"); }
+  function fecharModalLogin() { document.getElementById("modal-login").classList.remove("ativo"); }
+
+  function cadastrarUsuario() {
+    const nome = document.getElementById("login-nome").value.trim();
+    const wpp = document.getElementById("login-wpp").value.trim();
+    if (!nome || !wpp) { alert("Por favor, preencha o seu nome e WhatsApp."); return; }
+    localStorage.setItem("cg_nomeUsuario", nome);
+    localStorage.setItem("cg_telefoneUsuario", wpp);
+    alert("Cadastro realizado com sucesso! Bem-vindo(a), " + nome + ".");
+    document.getElementById("login-nome").value = "";
+    document.getElementById("login-wpp").value = "";
+    fecharModalLogin();
+    verificarUsuarioLogado();
+    carregarMensagens();
+  }
+
+  function atualizarContadorCarrinho() {
+    document.getElementById("qtd-carrinho").innerText = meuCarrinho.length;
+  }
+
+  function salvarCarrinho() {
+    localStorage.setItem("cg_carrinho", JSON.stringify(meuCarrinho));
+    atualizarContadorCarrinho();
+  }
+
+  function criarBotaoCarrinhoHTML(prodId, qtd, totalStr, nomePersonalizado = "") {
+    const nomeSeguro = nomePersonalizado.replace(/'/g, "\\'");
+    return `<button onclick="acaoAdicionarCarrinho('${prodId}', ${qtd}, '${totalStr}', this, '${nomeSeguro}')" style="margin-top:10px;width:100%;background:var(--laranja);color:white;padding:10px;border:none;border-radius:8px;cursor:pointer;font-weight:bold;">Adicionar ao carrinho de compra</button>`;
+  }
+
+  function acaoAdicionarCarrinho(prodId, qtd, totalStr, btnElement, nomePersonalizado = "") {
+    const prod = PRODUTOS[prodId];
+    const nomeItem = nomePersonalizado || prod.nome;
+    meuCarrinho.push({ id: prodId, nome: nomeItem, qtd: qtd, total: parseFloat(totalStr) });
+    salvarCarrinho();
+    if (btnElement) {
+      btnElement.innerText = "✔️ Adicionado ao Carrinho";
+      btnElement.style.background = "#25D366";
+      btnElement.disabled = true;
+    }
+    adicionarBolao({ tipo: "recebida", texto: "Item adicionado ao carrinho com sucesso. Quando quiser, abra o carrinho no menu para finalizar.", de: CONFIG.nomeAtendimento });
+  }
+
+  function selecionarSaborSanduiche(idProduto, saborId) {
+    const sabor = obterSaborSanduiche(saborId);
+    if (!sabor) return;
+    const fluxo = obterEstadoChat(idProduto);
+    fluxo.etapa = 2;
+    fluxo.saborId = saborId;
+    let nomeCliente = localStorage.getItem("cg_nomeUsuario") ? localStorage.getItem("cg_nomeUsuario").split(" ")[0] : "Você";
+    adicionarBolao({ tipo: "enviada", texto: sabor.nome, de: nomeCliente });
+    setTimeout(() => {
+      adicionarBolao({ tipo: "recebida", texto: `Perfeito! Quantas unidades de ${sabor.nome} você deseja?`, de: CONFIG.nomeAtendimento });
+    }, 350);
+  }
+
+  function removerItem(index) {
+    meuCarrinho.splice(index, 1);
+    salvarCarrinho();
+    renderCarrinhoPagina();
+  }
+
+  function abrirPagina(id) {
+    document.body.classList.add("chat-aberto");
+    paginaAtual = id;
+    document.querySelectorAll(".menu-item").forEach(el => el.classList.remove("ativo"));
+    const mi = document.getElementById("mi-" + id);
+    if (mi) mi.classList.add("ativo");
+
+    const formChat = document.getElementById("form-chat");
+    const chatArea = document.getElementById("chat-area");
+    const vitrine = document.getElementById("vitrine");
+    const principal = document.getElementById("principal");
+
+    vitrine.classList.remove("full-mode");
+    principal.classList.remove("produto-chat-ativo");
+
+    if (id === "home") {
+      document.getElementById("titulo-pagina").textContent = "Início";
+      formChat.style.display = "none";
+      chatArea.style.display = "none";
+      vitrine.style.display = "block";
+      vitrine.classList.add("full-mode");
+      renderHome();
+
+    } else if (id === "carrinho") {
+      document.getElementById("titulo-pagina").textContent = "Meu Carrinho";
+      formChat.style.display = "none";
+      chatArea.style.display = "none";
+      vitrine.style.display = "block";
+      vitrine.classList.add("full-mode");
+      renderCarrinhoPagina();
+
+    } else {
+      const p = PRODUTOS[id];
+      document.getElementById("titulo-pagina").textContent = p.nome;
+      formChat.style.display = "flex";
+      chatArea.style.display = "flex";
+      principal.classList.add("produto-chat-ativo");
+      vitrine.style.display = "block";
+      renderProduto(id, p);
+      estadoChat[id] = { etapa: 0, saborId: "" };
+      document.getElementById("input-msg").value = "Tenho interesse";
+      chatArea.innerHTML = "";
+      carregarMensagens();
+    }
+  }
+
+  function voltarMenu() { document.body.classList.remove("chat-aberto"); }
+
+  function renderHome() {
+    const wppLink = `https://wa.me/${obterWhatsappLink()}?text=${encodeURIComponent("Olá! Quero saber mais sobre os carrinhos gourmet.")}`;
+    const productsHTML = Object.entries(PRODUTOS).map(([id, prod]) => `
+      <div class="product-card" onclick="abrirPagina('${id}')">
+        <span class="product-icon">${prod.icone}</span>
+        <h3 class="product-name">${prod.nome}</h3>
+        <p class="product-desc">${prod.desc}</p>
+        <div class="product-badges">
+          ${prod.valorTex ? `<span class="product-badge">💰 ${prod.valorTex}</span>` : ""}
+          ${prod.minimoTex ? `<span class="product-badge">📦 ${prod.minimoTex}</span>` : ""}
+        </div>
+      </div>
+    `).join("");
+
+    const faqHTML = FAQ_HOME.map(item => `
+      <div class="faq-chat-card">
+        <div class="faq-pergunta">${item.pergunta}</div>
+        <div class="faq-resposta">${item.resposta}</div>
+      </div>
+    `).join("");
+
+    document.getElementById("vitrine").innerHTML = `
+      <div class="home-hero">
+        <h1 class="home-titulo">Transforme seu Evento em uma Experiência Gourmet</h1>
+        <p class="home-sub">Carrinhos temáticos com alimentos artesanais que encantam e surpreendem seus convidados</p>
+        <div class="faq-extra">
+          <span class="faq-pill">✅ Carrinho Grátis</span>
+          <span class="faq-pill">🎯 +4 Anos de Experiência</span>
+          <span class="faq-pill">💳 Pagamento via PIX</span>
+          <span class="faq-pill">📍 Belo Jardim 1</span>
+        </div>
+      </div>
+
+      <div style="max-width: 1400px; margin: 0 auto;">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 32px; text-align: center; color: var(--laranja); margin-bottom: 40px;">
+          Nossos Carrinhos Gourmet
+        </h2>
+        <div class="products-grid">
+          ${productsHTML}
+        </div>
+
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 32px; text-align: center; color: var(--laranja); margin: 60px 0 40px;">
+          Perguntas Frequentes
+        </h2>
+        <div class="faq-chat-grid">
+          ${faqHTML}
+        </div>
+
+        <div style="text-align: center; margin-top: 60px;">
+          <a href="${wppLink}" target="_blank" class="btn-wpp" style="display: inline-flex; font-size: 18px; padding: 18px 40px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.014 22l4.982-1.404A9.954 9.954 0 0 0 12 21.999c5.523 0 10-4.477 10-10S17.522 2 11.999 2z"/>
+            </svg>
+            FALE CONOSCO AGORA
+          </a>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderCarrinhoPagina() {
+    let html = `<h1 class="home-titulo" style="text-align:left;margin-bottom:20px;">🛒 Carrinho de Compra</h1>`;
+    if (meuCarrinho.length === 0) {
+      html += `<p>O seu carrinho está vazio. Selecione uma categoria no menu para adicionar itens.</p>`;
+    } else {
+      const enderecoSalvo = obterEnderecoEstruturadoSalvo();
+      let soma = 0;
+      let resumoItens = [];
+      meuCarrinho.forEach((item, index) => {
+        html += `<div class="cart-item"><div class="cart-info"><h4>${item.nome}</h4><p>Quantidade/Qtd: ${item.qtd}</p></div><div style="text-align:right;"><div class="cart-price">R$ ${item.total.toFixed(2).replace('.', ',')}</div><button class="btn-remover" onclick="removerItem(${index})">Remover</button></div></div>`;
+        soma += item.total;
+        resumoItens.push(`${item.nome} (${item.qtd}x)`);
+      });
+      pedidoAtual = { numero: "#" + Math.floor(1000 + Math.random() * 9000), total: soma, itensStr: resumoItens.join(", ") };
+      html += `
+        <div class="checkout-extra-box">
+          <h3>Dados do pedido</h3>
+          <p>Preencha os campos abaixo antes de seguir para o PIX. Assim o endereço vai completo para o atendimento, WhatsApp e planilha.</p>
+          <div class="checkout-address-grid">
+            <div class="checkout-field-wrap checkout-field-wrap-full">
+              <label class="checkout-field-label" for="checkout-rua">Rua</label>
+              <input id="checkout-rua" class="checkout-field" type="text" maxlength="120" placeholder="Ex.: Rua das Flores" value="${escaparHtml(enderecoSalvo.rua)}" oninput="salvarDadosCheckoutLocal()">
+            </div>
+            <div class="checkout-field-wrap">
+              <label class="checkout-field-label" for="checkout-numero">Número</label>
+              <input id="checkout-numero" class="checkout-field" type="text" maxlength="30" placeholder="Ex.: 123" value="${escaparHtml(enderecoSalvo.numero)}" oninput="salvarDadosCheckoutLocal()">
+            </div>
+            <div class="checkout-field-wrap">
+              <label class="checkout-field-label" for="checkout-bairro">Bairro</label>
+              <input id="checkout-bairro" class="checkout-field" type="text" maxlength="80" placeholder="Ex.: Centro" value="${escaparHtml(enderecoSalvo.bairro)}" oninput="salvarDadosCheckoutLocal()">
+            </div>
+            <div class="checkout-field-wrap checkout-field-wrap-full">
+              <label class="checkout-field-label" for="checkout-complemento">Complemento</label>
+              <input id="checkout-complemento" class="checkout-field" type="text" maxlength="120" placeholder="Ex.: apto 4, bloco B, casa azul..." value="${escaparHtml(enderecoSalvo.complemento)}" oninput="salvarDadosCheckoutLocal()">
+            </div>
+          </div>
+        </div>
+      `;
+      html += `<div class="cart-total">Total: R$ ${soma.toFixed(2).replace('.', ',')}</div><button onclick="abrirCheckout()" class="modal-btn" style="background:#25D366;margin-top:20px;font-size:16px;">PROSSEGUIR PARA O PAGAMENTO</button>`;
+    }
+    document.getElementById("vitrine").innerHTML = html;
+  }
+
+  function renderProduto(id, prod) {
+    let badgesHTML = '';
+    if (prod.valorTex || prod.minimoTex) {
+      badgesHTML = `<div class="prod-detalhes">`;
+      if (prod.valorTex) badgesHTML += `<span class="prod-badge">💰 Valor: ${prod.valorTex}</span>`;
+      if (prod.minimoTex) badgesHTML += `<span class="prod-badge">📦 Mínimo: ${prod.minimoTex}</span>`;
+      badgesHTML += `</div>`;
+    }
+
+    const imgSrc = IMGS[prod.imgKey] || "";
+    let imgHTML = "";
+    if (imgSrc) {
+      imgHTML = `
+        <div class="prod-foto-wrap" onclick="abrirModalImagem('${prod.imgKey}', '${prod.nome.replace(/'/g, "&#39;")}')">
+          <img class="prod-foto" src="${imgSrc}" alt="${prod.nome}" onload="ajustarLayoutChatProduto()">
+          <button type="button" class="prod-foto-zoom">Ampliar imagem</button>
+        </div>`;
+    } else {
+      imgHTML = `<div class="prod-foto-placeholder"><span>${prod.icone}</span><span>Imagem em breve</span></div>`;
+    }
+
+    const extraHTML = id === "sanduiche"
+      ? `
+        <div class="prod-detalhes" style="margin-top:8px;">
+          <span class="prod-badge">🥗 Sabores: Atum e Frango</span>
+          <span class="prod-badge">💬 Escolha pelo chat</span>
+        </div>
+      `
+      : "";
+
+    document.getElementById("vitrine").innerHTML = `
+      <div class="catalogo-info product-detail" id="catalogo-info">
+        ${imgHTML}
+        <h2 class="prod-titulo">${prod.icone} ${prod.nome}</h2>
+        ${badgesHTML}
+        <p class="prod-desc">${prod.desc}</p>
+        ${extraHTML}
+      </div>
+    `;
+    ajustarLayoutChatProduto();
+  }
+
+  function adicionarBolao(msg) {
+    const area = document.getElementById("chat-area");
+    const li = document.createElement("div");
+    li.className = "msg " + msg.tipo;
+    let html = `<small>${msg.de}</small><span>${msg.texto}</span>`;
+    if (msg.htmlBotao) html += msg.htmlBotao;
+    li.innerHTML = html;
+    area.appendChild(li);
+    area.scrollTop = area.scrollHeight;
+    ajustarLayoutChatProduto();
+  }
+
+  function ajustarLayoutChatProduto() {
+    const principal = document.getElementById("principal");
+    const chatArea = document.getElementById("chat-area");
+    const formChat = document.getElementById("form-chat");
+    const infoCatalogo = document.getElementById("catalogo-info");
+    if (!principal || !chatArea || !formChat) return;
+
+    if (!principal.classList.contains("produto-chat-ativo") || !infoCatalogo || chatArea.style.display === "none" || formChat.style.display === "none") {
+      chatArea.style.top = "";
+      chatArea.style.bottom = "";
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      const principalRect = principal.getBoundingClientRect();
+      const infoRect = infoCatalogo.getBoundingClientRect();
+      const formRect = formChat.getBoundingClientRect();
+      const topoChat = Math.max(0, Math.round(infoRect.bottom - principalRect.top + 10));
+      const espacoInferior = Math.max(0, Math.round(principalRect.bottom - formRect.top + 8));
+      chatArea.style.top = `${topoChat}px`;
+      chatArea.style.bottom = `${espacoInferior}px`;
+    });
+  }
+
+  function carregarMensagens() {
+    const area = document.getElementById("chat-area");
+    area.innerHTML = "";
+    let nomeUsuario = localStorage.getItem("cg_nomeUsuario");
+    let msgInicial = CONFIG.mensagemBoasVindas;
+    if (nomeUsuario) {
+      msgInicial = `Olá, ${nomeUsuario.split(' ')[0]}! Bem-vindo(a) de volta! 🍕🎉\nEstou aqui para ajudar com os detalhes do seu evento. O que precisa hoje?`;
+    }
+    adicionarBolao({ tipo: "recebida", texto: msgInicial, de: CONFIG.nomeAtendimento, ts: Date.now() });
+    area.scrollTop = area.scrollHeight;
+  }
+
+  function enviarMensagem(e) {
+    e.preventDefault();
+    const input = document.getElementById("input-msg");
+    const txt = input.value.trim();
+    if (!txt) return;
+    let nomeCliente = localStorage.getItem("cg_nomeUsuario") ? localStorage.getItem("cg_nomeUsuario").split(' ')[0] : "Você";
+    adicionarBolao({ tipo: "enviada", texto: txt, de: nomeCliente });
+    input.value = "";
+    processarIAdoSite(txt, paginaAtual);
+  }
+
+  function processarIAdoSite(textoCliente, idProduto) {
+    const prod = PRODUTOS[idProduto];
+    if (!prod) return;
+    const txtLow = textoCliente.toLowerCase();
+    const fluxo = obterEstadoChat(idProduto);
+    setTimeout(() => {
+      if (fluxo.etapa === 0 && (txtLow.includes("interesse") || txtLow.includes("olá") || txtLow.includes("ola") || txtLow.includes("quero"))) {
+        if (idProduto === "sanduiche") {
+          adicionarBolao({
+            tipo: "recebida",
+            texto: "Perfeito, temos 2 sabores. Qual deseja?",
+            htmlBotao: renderOpcoesSaboresChat(idProduto),
+            de: CONFIG.nomeAtendimento
+          });
+          fluxo.etapa = 1;
+          return;
         }
-
-        function abrirModalLogin() {
-            if (localStorage.getItem("cg_nomeUsuario")) {
-                if (confirm("Deseja sair (deslogar)?")) {
-                    localStorage.removeItem("cg_nomeUsuario");
-                    localStorage.removeItem("cg_telefoneUsuario");
-                    location.reload();
-                }
-                return;
-            }
-            document.getElementById("modal-login").classList.add("ativo");
+        if (prod.tipo === 'unidade') {
+          adicionarBolao({ tipo: "recebida", texto: `Que incrível! Quantas unidades você quer?`, de: CONFIG.nomeAtendimento });
+          fluxo.etapa = 2;
+        } else if (prod.tipo === 'fixo') {
+          let btn = criarBotaoCarrinhoHTML(idProduto, 1, prod.valorNum);
+          adicionarBolao({ tipo: "recebida", texto: `Este é um item de valor fixo. O preço é R$ ${prod.valorNum.toFixed(2).replace('.', ',')}.`, htmlBotao: btn, de: CONFIG.nomeAtendimento });
+        } else if (prod.tipo === 'combinar') {
+          let btn = criarBotaoCarrinhoHTML(idProduto, 1, 0);
+          adicionarBolao({ tipo: "recebida", texto: `Este item requer orçamento personalizado via WhatsApp. Quer adicionar ao carrinho para enviar a cotação?`, htmlBotao: btn, de: CONFIG.nomeAtendimento });
         }
-
-        function fecharModal(id) {
-            document.getElementById(id).classList.remove("ativo");
+      } else if (idProduto === "sanduiche" && fluxo.etapa === 1) {
+        adicionarBolao({
+          tipo: "recebida",
+          texto: "Escolha um dos sabores nos botões acima para continuarmos.",
+          htmlBotao: renderOpcoesSaboresChat(idProduto),
+          de: CONFIG.nomeAtendimento
+        });
+      } else if (fluxo.etapa === 2) {
+        let qtd = parseInt(textoCliente.replace(/\D/g, ''));
+        if (isNaN(qtd)) {
+          adicionarBolao({ tipo: "recebida", texto: `Por favor, digite apenas o número de unidades. Ex: 100.`, de: CONFIG.nomeAtendimento });
+        } else if (qtd < prod.minNum) {
+          adicionarBolao({ tipo: "recebida", texto: `Atenção: a quantidade mínima para este item é de ${prod.minNum} unidades.`, de: CONFIG.nomeAtendimento });
+        } else {
+          let precoTotal = qtd * prod.valorNum;
+          const sabor = idProduto === "sanduiche" ? obterSaborSanduiche(fluxo.saborId) : null;
+          const nomeItem = sabor ? `${prod.nome} - ${sabor.nome.replace("Sanduíche Natural de ", "").replace("Sanduíche Natural ", "")}` : "";
+          let btn = criarBotaoCarrinhoHTML(idProduto, qtd, precoTotal, nomeItem);
+          const textoResposta = sabor
+            ? `Perfeito! ${qtd} unidades de ${sabor.nome}. O valor total fica R$ ${precoTotal.toFixed(2).replace('.', ',')}.`
+            : `O valor total fica R$ ${precoTotal.toFixed(2).replace('.', ',')}.`;
+          adicionarBolao({ tipo: "recebida", texto: textoResposta, htmlBotao: btn, de: CONFIG.nomeAtendimento });
+          fluxo.etapa = 0;
+          fluxo.saborId = "";
         }
+      } else {
+        adicionarBolao({ tipo: "recebida", texto: `Certo! Se quiser cotar, é só dizer "tenho interesse".`, de: CONFIG.nomeAtendimento });
+      }
+    }, 600);
+  }
 
-        function cadastrarUsuario() {
-            const nome = document.getElementById("login-nome").value.trim();
-            const wpp = document.getElementById("login-wpp").value.trim();
-            if (!nome || !wpp) {
-                alert("Preencha todos os campos!");
-                return;
-            }
-            localStorage.setItem("cg_nomeUsuario", nome);
-            localStorage.setItem("cg_telefoneUsuario", wpp);
-            alert("Bem-vindo(a), " + nome + "!");
-            document.getElementById("login-nome").value = "";
-            document.getElementById("login-wpp").value = "";
-            fecharModal("modal-login");
-            verificarUsuarioLogado();
-        }
 
-        function atualizarContadorCarrinho() {
-            document.getElementById("qtd-carrinho").innerText = meuCarrinho.length;
-        }
+  function abrirModalImagem(imgKey, nome) {
+    const imgSrc = IMGS[imgKey] || "";
+    if (!imgSrc) return;
+    document.getElementById("imagem-expandida").src = imgSrc;
+    document.getElementById("imagem-legenda").textContent = nome;
+    document.getElementById("modal-imagem").classList.add("ativo");
+  }
 
-        function salvarCarrinho() {
-            localStorage.setItem("cg_carrinho", JSON.stringify(meuCarrinho));
-            atualizarContadorCarrinho();
-        }
+  function fecharModalImagem(event) {
+    if (event.target && event.target.id === "modal-imagem") {
+      fecharModal("modal-imagem");
+    }
+  }
 
-        function voltarMenu() {
-            document.body.classList.remove("chat-aberto");
-        }
+  function obterWhatsappLink() {
+    const numeroLimpo = String(CONFIG.whatsapp || "").replace(/\D/g, "");
+    if (!numeroLimpo) return "";
+    return numeroLimpo.startsWith("55") ? numeroLimpo : `55${numeroLimpo}`;
+  }
 
-        function abrirPagina(id) {
-            document.body.classList.add("chat-aberto");
-            paginaAtual = id;
-            
-            document.querySelectorAll(".menu-item").forEach(el => el.classList.remove("ativo"));
-            const mi = document.getElementById("mi-" + id);
-            if (mi) mi.classList.add("ativo");
+  function formatarValorBRL(valor) {
+    return `R$ ${Number(valor || 0).toFixed(2).replace(".", ",")}`;
+  }
 
-            const formChat = document.getElementById("form-chat");
-            const chatArea = document.getElementById("chat-area");
-            const vitrine = document.getElementById("vitrine");
+  function escaparHtml(valor) {
+    return String(valor || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
 
-            if (id === "home") {
-                document.getElementById("titulo-pagina").textContent = "Início";
-                formChat.style.display = "none";
-                chatArea.style.display = "none";
-                vitrine.style.display = "block";
-                renderHome();
-            } else if (id === "carrinho") {
-                document.getElementById("titulo-pagina").textContent = "Meu Carrinho";
-                formChat.style.display = "none";
-                chatArea.style.display = "none";
-                vitrine.style.display = "block";
-                renderCarrinho();
-            } else {
-                const p = PRODUTOS[id];
-                document.getElementById("titulo-pagina").textContent = p.nome;
-                formChat.style.display = "flex";
-                chatArea.style.display = "flex";
-                vitrine.style.display = "block";
-                renderProduto(id, p);
-                estadoChat[id] = { etapa: 0 };
-                chatArea.innerHTML = "";
-                carregarMensagens();
-            }
-        }
+  function obterEnderecoEstruturadoSalvo() {
+    const enderecoAntigo = (localStorage.getItem("cg_enderecoUsuario") || "").trim();
+    const enderecoAntigoEhResumo = /^Rua:/i.test(enderecoAntigo);
+    let enderecoSalvo = {};
 
-        function renderHome() {
-            const wppLink = `https://wa.me/5568926266120?text=${encodeURIComponent("Olá! Quero saber mais sobre os carrinhos gourmet.")}`;
-            
-            const productsHTML = Object.entries(PRODUTOS).map(([id, prod]) => `
-                <div class="product-card" onclick="abrirPagina('${id}')">
-                    <span class="product-icon">${prod.icone}</span>
-                    <h3 class="product-name">${prod.nome}</h3>
-                    <p class="product-desc">${prod.desc}</p>
-                    <div class="product-badges">
-                        ${prod.valorTex ? `<span class="product-badge">💰 ${prod.valorTex}</span>` : ''}
-                        ${prod.minimoTex ? `<span class="product-badge">📦 ${prod.minimoTex}</span>` : ''}
-                    </div>
-                </div>
-            `).join('');
+    try {
+      enderecoSalvo = JSON.parse(localStorage.getItem("cg_enderecoEstruturado") || "{}") || {};
+    } catch (erro) {
+      enderecoSalvo = {};
+    }
 
-            const faqHTML = FAQ_HOME.map(item => `
-                <div class="faq-chat-card">
-                    <div class="faq-pergunta">${item.pergunta}</div>
-                    <div class="faq-resposta">${item.resposta}</div>
-                </div>
-            `).join('');
+    return {
+      rua: String(enderecoSalvo.rua || (enderecoAntigo && !enderecoAntigoEhResumo && !enderecoSalvo.rua ? enderecoAntigo : "")).trim(),
+      numero: String(enderecoSalvo.numero || "").trim(),
+      bairro: String(enderecoSalvo.bairro || "").trim(),
+      complemento: String(enderecoSalvo.complemento || "").trim(),
+      referencia: String(enderecoSalvo.referencia || "").trim()
+    };
+  }
 
-            document.getElementById("vitrine").innerHTML = `
-                <div class="home-hero">
-                    <h1 class="home-titulo">Transforme seu Evento em uma Experiência Gourmet</h1>
-                    <p class="home-sub">Carrinhos temáticos com alimentos artesanais que encantam e surpreendem seus convidados</p>
-                    <div class="faq-extra">
-                        <span class="faq-pill">✅ Carrinho Grátis</span>
-                        <span class="faq-pill">🎯 +4 Anos de Experiência</span>
-                        <span class="faq-pill">💳 Pagamento via PIX</span>
-                        <span class="faq-pill">📍 Belo Jardim 1</span>
-                    </div>
-                </div>
+  function montarEnderecoCompleto(endereco) {
+    return [
+      `Rua: ${endereco.rua || "Não informado"}`,
+      `Número: ${endereco.numero || "Não informado"}`,
+      `Bairro: ${endereco.bairro || "Não informado"}`,
+      `Complemento: ${endereco.complemento || "Não informado"}`
+    ].join(" | ");
+  }
 
-                <div style="max-width: 1400px; margin: 0 auto;">
-                    <h2 style="font-family: 'Playfair Display', serif; font-size: 32px; text-align: center; color: var(--laranja); margin-bottom: 40px;">
-                        Nossos Carrinhos Gourmet
-                    </h2>
-                    <div class="products-grid">
-                        ${productsHTML}
-                    </div>
+  function montarEnderecoWhatsApp(endereco) {
+    return [
+      `Rua: ${endereco.rua || "Não informado"}`,
+      `Número: ${endereco.numero || "Não informado"}`,
+      `Bairro: ${endereco.bairro || "Não informado"}`,
+      `Complemento: ${endereco.complemento || "Não informado"}`
+    ].join("\n");
+  }
 
-                    <h2 style="font-family: 'Playfair Display', serif; font-size: 32px; text-align: center; color: var(--laranja); margin: 60px 0 40px;">
-                        Perguntas Frequentes
-                    </h2>
-                    <div class="faq-chat-grid">
-                        ${faqHTML}
-                    </div>
+  function salvarDadosCheckoutLocal() {
+    const enderecoSalvo = obterEnderecoEstruturadoSalvo();
+    const campoRua = document.getElementById("checkout-rua");
+    const campoNumero = document.getElementById("checkout-numero");
+    const campoBairro = document.getElementById("checkout-bairro");
+    const campoComplemento = document.getElementById("checkout-complemento");
+    const endereco = {
+      rua: campoRua ? campoRua.value.trim() : enderecoSalvo.rua,
+      numero: campoNumero ? campoNumero.value.trim() : enderecoSalvo.numero,
+      bairro: campoBairro ? campoBairro.value.trim() : enderecoSalvo.bairro,
+      complemento: campoComplemento ? campoComplemento.value.trim() : enderecoSalvo.complemento,
+      referencia: ""
+    };
+    const observacao = "";
+    const enderecoCompleto = montarEnderecoCompleto(endereco);
 
-                    <div style="text-align: center; margin-top: 60px;">
-                        <a href="${wppLink}" target="_blank" class="btn-wpp" style="display: inline-flex; font-size: 18px; padding: 18px 40px;">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                                <path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.014 22l4.982-1.404A9.954 9.954 0 0 0 12 21.999c5.523 0 10-4.477 10-10S17.522 2 11.999 2z"/>
-                            </svg>
-                            FALE CONOSCO AGORA
-                        </a>
-                    </div>
-                </div>
-            `;
-        }
+    localStorage.setItem("cg_enderecoEstruturado", JSON.stringify(endereco));
+    localStorage.setItem("cg_enderecoUsuario", enderecoCompleto);
 
-        function renderProduto(id, prod) {
-            let badgesHTML = '';
-            if (prod.valorTex || prod.minimoTex) {
-                badgesHTML = `<div class="prod-detalhes">`;
-                if (prod.valorTex) badgesHTML += `<span class="prod-badge">💰 ${prod.valorTex}</span>`;
-                if (prod.minimoTex) badgesHTML += `<span class="prod-badge">📦 ${prod.minimoTex}</span>`;
-                badgesHTML += `</div>`;
-            }
+    localStorage.removeItem("cg_observacaoPedido");
 
-            document.getElementById("vitrine").innerHTML = `
-                <div class="product-detail">
-                    <div class="prod-foto-placeholder">
-                        <span>${prod.icone}</span>
-                        <span style="font-size: 16px;">Imagem em breve</span>
-                    </div>
-                    <h2 class="prod-titulo">${prod.icone} ${prod.nome}</h2>
-                    ${badgesHTML}
-                    <p class="prod-desc">${prod.desc}</p>
-                </div>
-            `;
-        }
+    return { endereco, enderecoCompleto, observacao };
+  }
 
-        function renderCarrinho() {
-            let html = `<h1 class="home-titulo" style="text-align:center;margin-bottom:40px;">🛒 Seu Carrinho</h1>`;
-            
-            if (meuCarrinho.length === 0) {
-                html += `
-                    <div style="text-align: center; padding: 60px 20px;">
-                        <div style="font-size: 80px; margin-bottom: 20px; opacity: 0.3;">🛒</div>
-                        <p style="font-size: 18px; color: rgba(255,255,255,0.6);">Seu carrinho está vazio</p>
-                        <p style="font-size: 14px; color: rgba(255,255,255,0.4); margin-top: 10px;">Adicione produtos pelo menu</p>
-                    </div>
-                `;
-            } else {
-                let soma = 0;
-                meuCarrinho.forEach((item, index) => {
-                    html += `
-                        <div class="cart-item">
-                            <div class="cart-info">
-                                <h4>${item.nome}</h4>
-                                <p>Quantidade: ${item.qtd}</p>
-                            </div>
-                            <div style="text-align:right;">
-                                <div class="cart-price">R$ ${item.total.toFixed(2).replace('.', ',')}</div>
-                                <button class="btn-remover" onclick="removerItem(${index})">Remover</button>
-                            </div>
-                        </div>
-                    `;
-                    soma += item.total;
-                });
+  function obterDadosComplementaresPedido() {
+    const dados = salvarDadosCheckoutLocal();
+    return {
+      endereco: dados.enderecoCompleto || "Rua: Não informado | Número: Não informado | Bairro: Não informado | Complemento: Não informado",
+      enderecoEstruturado: dados.endereco,
+      observacao: dados.observacao || "Sem observações informadas pelo cliente"
+    };
+  }
 
-                pedidoAtual = {
-                    numero: "#" + Math.floor(1000 + Math.random() * 9000),
-                    total: soma
-                };
+  function abrirCheckout() {
+    if (!localStorage.getItem("cg_nomeUsuario")) {
+      alert("Por favor, faça login antes de finalizar a compra.");
+      abrirModalLogin();
+      return;
+    }
+    if (!pedidoAtual.numero || !pedidoAtual.itensStr) {
+      alert("Seu carrinho ainda não gerou um pedido válido.");
+      return;
+    }
+    salvarDadosCheckoutLocal();
+    document.getElementById("chave-pix-texto").innerText = CONFIG.chave_pix;
+    document.getElementById("checkout-pedido-numero").innerText = pedidoAtual.numero;
+    document.getElementById("checkout-valor-total").innerText = formatarValorBRL(pedidoAtual.total);
+    registrarPedidoNaPlanilha();
+    document.getElementById("modal-checkout").classList.add("ativo");
+  }
 
-                html += `
-                    <div class="cart-total">Total: R$ ${soma.toFixed(2).replace('.', ',')}</div>
-                    <button onclick="abrirCheckout()" class="modal-btn" style="margin-top:30px;font-size:18px;background: linear-gradient(135deg, var(--verde) 0%, #1aa854 100%);">
-                        ✅ FINALIZAR PEDIDO
-                    </button>
-                `;
-            }
+  function copiarPix() {
+    const chavePix = CONFIG.chave_pix;
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(chavePix)
+        .then(() => alert("Chave PIX copiada!"))
+        .catch(() => copiarPixFallback(chavePix));
+      return;
+    }
+    copiarPixFallback(chavePix);
+  }
 
-            document.getElementById("vitrine").innerHTML = html;
-        }
+  function copiarPixFallback(chavePix) {
+    const inputTemp = document.createElement("textarea");
+    inputTemp.value = chavePix;
+    inputTemp.style.position = "fixed";
+    inputTemp.style.opacity = "0";
+    document.body.appendChild(inputTemp);
+    inputTemp.select();
+    inputTemp.setSelectionRange(0, inputTemp.value.length);
+    try {
+      document.execCommand("copy");
+      alert("Chave PIX copiada!");
+    } catch (erro) {
+      alert("Não foi possível copiar automaticamente. Copie manualmente a chave PIX.");
+    }
+    inputTemp.remove();
+  }
 
-        function removerItem(index) {
-            meuCarrinho.splice(index, 1);
-            salvarCarrinho();
-            renderCarrinho();
-        }
+  function montarItensWhatsApp() {
+    if (!meuCarrinho.length) return pedidoAtual.itensStr || "Nenhum item informado";
+    return meuCarrinho.map(item =>
+      `- ${item.nome} | Qtd: ${item.qtd} | ${formatarValorBRL(item.total)}`
+    ).join("\n");
+  }
 
-        function carregarMensagens() {
-            const area = document.getElementById("chat-area");
-            area.innerHTML = "";
-            let nome = localStorage.getItem("cg_nomeUsuario");
-            let msg = nome 
-                ? `Olá, ${nome.split(' ')[0]}! 🎉\n\nEstou aqui para ajudar com seu evento. Digite "tenho interesse" para começar!`
-                : "Olá! Seja bem-vindo(a)! 🎉\n\nComo posso ajudar com seu evento?";
-            
-            adicionarMensagem({
-                tipo: "recebida",
-                texto: msg,
-                de: CONFIG.nomeAtendimento
-            });
-        }
+  function montarItensPlanilha() {
+    if (!meuCarrinho.length) return pedidoAtual.itensStr || "Nenhum item informado";
+    return meuCarrinho.map(item => `${item.nome} (${item.qtd}x)`).join(", ");
+  }
 
-        function adicionarMensagem(msg) {
-            const area = document.getElementById("chat-area");
-            const div = document.createElement("div");
-            div.className = "msg " + msg.tipo;
-            div.innerHTML = `<small>${msg.de}</small><span>${msg.texto}</span>`;
-            if (msg.htmlBotao) div.innerHTML += msg.htmlBotao;
-            area.appendChild(div);
-            area.scrollTop = area.scrollHeight;
-        }
+  function montarPayloadPedidoPlanilha() {
+    return {
+      pedido: pedidoAtual.numero || "",
+      nome: localStorage.getItem("cg_nomeUsuario") || "Desconhecido",
+      telefone: localStorage.getItem("cg_telefoneUsuario") || "Nao informado",
+      itens: montarItensPlanilha(),
+      total: formatarValorBRL(pedidoAtual.total)
+    };
+  }
 
-        function enviarMensagem(e) {
-            e.preventDefault();
-            const input = document.getElementById("input-msg");
-            const txt = input.value.trim();
-            if (!txt) return;
+  function enviarPedidoParaPlanilha(dados) {
+    const iframeExistente = document.getElementById("iframe-envio-planilha");
+    if (iframeExistente) iframeExistente.remove();
+    const formExistente = document.getElementById("form-envio-planilha");
+    if (formExistente) formExistente.remove();
+    const iframe = document.createElement("iframe");
+    iframe.name = "iframe-envio-planilha";
+    iframe.id = "iframe-envio-planilha";
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = CONFIG.url_google_script;
+    form.target = "iframe-envio-planilha";
+    form.style.display = "none";
+    form.id = "form-envio-planilha";
+    Object.keys(dados).forEach(chave => {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = chave;
+      input.value = dados[chave];
+      form.appendChild(input);
+    });
+    document.body.appendChild(form);
+    form.submit();
+    setTimeout(() => { form.remove(); }, 2000);
+  }
 
-            let nome = localStorage.getItem("cg_nomeUsuario");
-            adicionarMensagem({
-                tipo: "enviada",
-                texto: txt,
-                de: nome ? nome.split(' ')[0] : "Você"
-            });
-            input.value = "";
-            processarMensagem(txt, paginaAtual);
-        }
+  function registrarPedidoNaPlanilha() {
+    if (!CONFIG.url_google_script || pedidoAtual.enviadoPlanilha) return;
 
-        function processarMensagem(texto, idProduto) {
-            const prod = PRODUTOS[idProduto];
-            if (!prod) return;
+    try {
+      enviarPedidoParaPlanilha(montarPayloadPedidoPlanilha());
+      pedidoAtual.enviadoPlanilha = true;
+    } catch (erro) {
+      console.error("Erro ao registrar pedido na planilha:", erro);
+    }
+  }
 
-            const txtLow = texto.toLowerCase();
-            const fluxo = estadoChat[idProduto] || { etapa: 0 };
+  function confirmarPagamento() {
+    if (!pedidoAtual.numero || !pedidoAtual.total) {
+      alert("Seu pedido ainda não está pronto para pagamento.");
+      return;
+    }
+    const nomeUsuario = localStorage.getItem("cg_nomeUsuario") || "Desconhecido";
+    const telefoneUsuario = localStorage.getItem("cg_telefoneUsuario") || "Não informado";
+    const dadosComplementares = obterDadosComplementaresPedido();
+    const enderecoUsuario = dadosComplementares.endereco;
+    const enderecoEstruturado = dadosComplementares.enderecoEstruturado || {};
+    const observacaoUsuario = dadosComplementares.observacao;
+    const itensWhatsApp = montarItensWhatsApp();
+    const totalFormatado = formatarValorBRL(pedidoAtual.total);
 
-            setTimeout(() => {
-                if (fluxo.etapa === 0 && (txtLow.includes("interesse") || txtLow.includes("quero"))) {
-                    if (prod.tipo === 'unidade') {
-                        adicionarMensagem({
-                            tipo: "recebida",
-                            texto: `Perfeito! Quantas unidades você deseja?`,
-                            de: CONFIG.nomeAtendimento
-                        });
-                        fluxo.etapa = 1;
-                    } else if (prod.tipo === 'fixo') {
-                        let btn = `<button onclick="acaoAdicionar('${idProduto}', 1, ${prod.valorNum})" style="margin-top:12px;width:100%;background:var(--laranja);color:white;padding:12px;border:none;border-radius:10px;cursor:pointer;font-weight:bold;">Adicionar ao Carrinho</button>`;
-                        adicionarMensagem({
-                            tipo: "recebida",
-                            texto: `Valor fixo: R$ ${prod.valorNum.toFixed(2).replace('.', ',')}`,
-                            htmlBotao: btn,
-                            de: CONFIG.nomeAtendimento
-                        });
-                    } else {
-                        let btn = `<button onclick="acaoAdicionar('${idProduto}', 1, 0)" style="margin-top:12px;width:100%;background:var(--laranja);color:white;padding:12px;border:none;border-radius:10px;cursor:pointer;font-weight:bold;">Adicionar ao Carrinho</button>`;
-                        adicionarMensagem({
-                            tipo: "recebida",
-                            texto: `Este item precisa de orçamento. Adicione ao carrinho para cotação via WhatsApp.`,
-                            htmlBotao: btn,
-                            de: CONFIG.nomeAtendimento
-                        });
-                    }
-                } else if (fluxo.etapa === 1) {
-                    let qtd = parseInt(texto.replace(/\D/g, ''));
-                    if (isNaN(qtd)) {
-                        adicionarMensagem({
-                            tipo: "recebida",
-                            texto: `Digite apenas o número. Ex: 100`,
-                            de: CONFIG.nomeAtendimento
-                        });
-                    } else if (qtd < prod.minNum) {
-                        adicionarMensagem({
-                            tipo: "recebida",
-                            texto: `Quantidade mínima: ${prod.minNum} unidades.`,
-                            de: CONFIG.nomeAtendimento
-                        });
-                    } else {
-                        let total = qtd * prod.valorNum;
-                        let btn = `<button onclick="acaoAdicionar('${idProduto}', ${qtd}, ${total})" style="margin-top:12px;width:100%;background:var(--laranja);color:white;padding:12px;border:none;border-radius:10px;cursor:pointer;font-weight:bold;">Adicionar ao Carrinho</button>`;
-                        adicionarMensagem({
-                            tipo: "recebida",
-                            texto: `Perfeito! ${qtd} unidades = R$ ${total.toFixed(2).replace('.', ',')}`,
-                            htmlBotao: btn,
-                            de: CONFIG.nomeAtendimento
-                        });
-                        fluxo.etapa = 0;
-                    }
-                } else {
-                    adicionarMensagem({
-                        tipo: "recebida",
-                        texto: `Digite "tenho interesse" para começar!`,
-                        de: CONFIG.nomeAtendimento
-                    });
-                }
-                estadoChat[idProduto] = fluxo;
-            }, 500);
-        }
+    if (CONFIG.url_google_script && !pedidoAtual.enviadoPlanilha) {
+      try {
+        enviarPedidoParaPlanilha(montarPayloadPedidoPlanilha());
+        pedidoAtual.enviadoPlanilha = true;
+        pedidoAtual.pagamentoInformado = true;
+      } catch (erro) {
+        console.error("Erro ao enviar pedido para a planilha:", erro);
+      }
+    }
 
-        function acaoAdicionar(prodId, qtd, total) {
-            const prod = PRODUTOS[prodId];
-            meuCarrinho.push({
-                id: prodId,
-                nome: prod.nome,
-                qtd: qtd,
-                total: total
-            });
-            salvarCarrinho();
-            
-            adicionarMensagem({
-                tipo: "recebida",
-                texto: `✅ Adicionado ao carrinho! Continue comprando ou finalize no menu "Carrinho".`,
-                de: CONFIG.nomeAtendimento
-            });
-        }
+    const msgWhatsApp =
+      `Olá! Já realizei o pagamento via PIX.\n\n` +
+      `Pedido: ${pedidoAtual.numero}\n` +
+      `Nome: ${nomeUsuario}\n` +
+      `Telefone: ${telefoneUsuario}\n` +
+      `Endereço:\n${montarEnderecoWhatsApp(enderecoEstruturado)}\n` +
+      `Produtos comprados:\n${itensWhatsApp}\n` +
+      `Total do carrinho: ${totalFormatado}\n\n` +
+      `Vou enviar o comprovante logo abaixo.`;
 
-        function abrirCheckout() {
-            if (!localStorage.getItem("cg_nomeUsuario")) {
-                alert("Faça login primeiro!");
-                abrirModalLogin();
-                return;
-            }
+    const janelaWhatsApp = window.open(`https://wa.me/${obterWhatsappLink()}?text=${encodeURIComponent(msgWhatsApp)}`, "_blank");
+    if (!janelaWhatsApp) {
+      alert("Não consegui abrir o WhatsApp automaticamente. Verifique se o navegador bloqueou a janela.");
+      return;
+    }
+    meuCarrinho = [];
+    salvarCarrinho();
+    localStorage.removeItem("cg_observacaoPedido");
+    fecharModal("modal-checkout");
+    abrirPagina("home");
+  }
 
-            document.getElementById("chave-pix-texto").innerText = CONFIG.chave_pix;
-            document.getElementById("checkout-pedido-numero").innerText = pedidoAtual.numero;
-            document.getElementById("checkout-valor-total").innerText = `R$ ${pedidoAtual.total.toFixed(2).replace('.', ',')}`;
-            document.getElementById("modal-checkout").classList.add("ativo");
-        }
+  function enviarFoto(event) {
+    const arquivo = event.target.files[0];
+    if (!arquivo) return;
+    alert("Envio de foto ainda não está ativo nesta versão.");
+    event.target.value = "";
+  }
 
-        function copiarPix() {
-            navigator.clipboard.writeText(CONFIG.chave_pix)
-                .then(() => alert("✅ Chave PIX copiada!"))
-                .catch(() => alert("Copie manualmente: " + CONFIG.chave_pix));
-        }
-
-        function confirmarPagamento() {
-            const nome = localStorage.getItem("cg_nomeUsuario") || "Cliente";
-            const tel = localStorage.getItem("cg_telefoneUsuario") || "";
-            
-            const itens = meuCarrinho.map(item => 
-                `- ${item.nome} (${item.qtd}x) = R$ ${item.total.toFixed(2).replace('.', ',')}`
-            ).join('\n');
-
-            const msg = `Olá! Realizei o pagamento via PIX.\n\nPedido: ${pedidoAtual.numero}\nNome: ${nome}\nTelefone: ${tel}\n\nItens:\n${itens}\n\nTotal: R$ ${pedidoAtual.total.toFixed(2).replace('.', ',')}\n\nVou enviar o comprovante agora.`;
-
-            window.open(`https://wa.me/5568926266120?text=${encodeURIComponent(msg)}`, '_blank');
-
-            meuCarrinho = [];
-            salvarCarrinho();
-            fecharModal("modal-checkout");
-            abrirPagina("home");
-        }
-
-        window.onload = () => {
-            verificarUsuarioLogado();
-            abrirPagina("home");
-        };
-    </script>
+  window.onload = () => {
+    verificarUsuarioLogado();
+    abrirPagina("home");
+    window.addEventListener("resize", ajustarLayoutChatProduto);
+  };
+</script>
 </body>
 </html>
+
