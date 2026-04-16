@@ -448,8 +448,9 @@
 
         .product-badges {
             display: flex;
+            flex-direction: column;
+            align-items: flex-start;
             gap: 8px;
-            flex-wrap: wrap;
             margin-top: 15px;
         }
 
@@ -1827,6 +1828,12 @@ const IMGS = window.IMGS || {};
 
   function voltarMenu() { document.body.classList.remove("chat-aberto"); }
 
+  function formatarMinimoHome(minimoTex) {
+    const texto = String(minimoTex || "").trim();
+    if (!texto) return "";
+    return /^mínimo:/i.test(texto) ? texto : `Mínimo: ${texto}`;
+  }
+
   function renderHome() {
     const wppLink = `https://wa.me/${obterWhatsappLink()}?text=${encodeURIComponent("Olá! Quero saber mais sobre os carrinhos gourmet.")}`;
     const productsHTML = Object.entries(PRODUTOS).map(([id, prod]) => `
@@ -1836,7 +1843,7 @@ const IMGS = window.IMGS || {};
         <p class="product-desc">${prod.desc}</p>
         <div class="product-badges">
           ${prod.valorTex ? `<span class="product-badge">💰 ${prod.valorTex}</span>` : ""}
-          ${prod.minimoTex ? `<span class="product-badge">📦 ${prod.minimoTex}</span>` : ""}
+          ${prod.minimoTex ? `<span class="product-badge">📦 ${formatarMinimoHome(prod.minimoTex)}</span>` : ""}
         </div>
       </div>
     `).join("");
