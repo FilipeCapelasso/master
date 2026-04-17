@@ -215,8 +215,8 @@
             display: inline-flex;
             align-items: flex-end;
             justify-content: center;
-            width: 1.06em;
-            height: 0.94em;
+            width: 1.08em;
+            height: 0.9em;
             flex-shrink: 0;
             vertical-align: middle;
         }
@@ -228,17 +228,18 @@
         .empada-icon {
             position: relative;
             display: inline-block;
-            width: 0.64em;
-            height: 0.3em;
+            width: 0.58em;
+            height: 0.26em;
             flex-shrink: 0;
             vertical-align: middle;
             background:
-                linear-gradient(180deg, #f8e9bf 0%, #efcf92 72%, #d9ae63 100%);
-            clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
-            border-radius: 0 0 38% 38%;
+                linear-gradient(90deg, transparent 0 10%, rgba(188, 154, 95, 0.34) 10% 12%, transparent 12% 27%, rgba(188, 154, 95, 0.26) 27% 29%, transparent 29% 44%, rgba(188, 154, 95, 0.3) 44% 46%, transparent 46% 61%, rgba(188, 154, 95, 0.24) 61% 63%, transparent 63% 78%, rgba(188, 154, 95, 0.3) 78% 80%, transparent 80% 100%),
+                linear-gradient(180deg, #f8ecc6 0%, #efcf92 72%, #d8ac60 100%);
+            clip-path: polygon(7% 0, 93% 0, 100% 100%, 0 100%);
+            border-radius: 0 0 44% 44%;
             box-shadow:
-                inset 0 0.03em 0 rgba(255, 251, 238, 0.55),
-                inset 0 -0.03em 0 rgba(183, 131, 61, 0.2),
+                inset 0 0.03em 0 rgba(255, 251, 238, 0.62),
+                inset 0 -0.03em 0 rgba(183, 131, 61, 0.18),
                 0 0.04em 0.08em rgba(149, 103, 42, 0.12);
             z-index: 2;
         }
@@ -246,20 +247,20 @@
         .empada-icon::before {
             content: "";
             position: absolute;
-            left: -0.17em;
-            right: -0.17em;
-            top: -0.29em;
-            height: 0.5em;
+            left: -0.23em;
+            right: -0.23em;
+            top: -0.34em;
+            height: 0.56em;
             background:
-                radial-gradient(ellipse at 28% 26%, rgba(255, 241, 188, 0.95) 0 13%, transparent 14%),
-                radial-gradient(ellipse at 48% 18%, rgba(255, 248, 219, 0.58) 0 14%, transparent 15%),
-                radial-gradient(ellipse at 68% 34%, rgba(255, 224, 141, 0.74) 0 10%, transparent 11%),
-                radial-gradient(ellipse at 54% 48%, rgba(235, 146, 26, 0.34) 0 18%, transparent 19%),
-                linear-gradient(180deg, #ffe38a 0%, #f6c84a 54%, #e39a22 100%);
-            border-radius: 50% 50% 42% 42% / 74% 74% 34% 34%;
+                radial-gradient(ellipse at 28% 26%, rgba(255, 244, 197, 0.96) 0 13%, transparent 14%),
+                radial-gradient(ellipse at 52% 18%, rgba(255, 248, 225, 0.58) 0 15%, transparent 16%),
+                radial-gradient(ellipse at 72% 32%, rgba(255, 218, 126, 0.76) 0 10%, transparent 11%),
+                radial-gradient(ellipse at 56% 44%, rgba(232, 144, 27, 0.3) 0 20%, transparent 21%),
+                linear-gradient(180deg, #ffe28e 0%, #f5c84d 50%, #e39c24 100%);
+            border-radius: 50% 50% 44% 44% / 82% 82% 30% 30%;
             box-shadow:
-                inset 0 0.05em 0 rgba(255, 250, 226, 0.34),
-                inset 0 -0.04em 0 rgba(177, 117, 28, 0.18),
+                inset 0 0.05em 0 rgba(255, 250, 226, 0.36),
+                inset 0 -0.04em 0 rgba(177, 117, 28, 0.16),
                 0 0.04em 0.08em rgba(159, 103, 26, 0.12);
         }
 
@@ -267,30 +268,33 @@
             content: "";
             position: absolute;
             left: 50%;
-            top: -0.15em;
-            width: 0.42em;
-            height: 0.2em;
-            transform: translateX(-50%) rotate(-6deg);
+            top: -0.21em;
+            width: 0.76em;
+            height: 0.28em;
+            transform: translateX(-50%);
             background:
-                radial-gradient(ellipse at 50% 50%, rgba(255, 196, 89, 0.86) 0 36%, rgba(240, 158, 31, 0.62) 37% 58%, transparent 59%);
-            opacity: 0.88;
+                linear-gradient(118deg, transparent 0 43%, rgba(159, 108, 33, 0.38) 44% 46%, transparent 47% 100%),
+                linear-gradient(74deg, transparent 0 48%, rgba(159, 108, 33, 0.3) 49% 50%, transparent 51% 100%),
+                linear-gradient(96deg, transparent 0 52%, rgba(159, 108, 33, 0.22) 53% 54%, transparent 55% 100%),
+                radial-gradient(ellipse at 50% 46%, rgba(255, 198, 99, 0.64) 0 28%, transparent 29%);
+            opacity: 0.92;
             pointer-events: none;
         }
 
         .menu-item .empada-icone-wrap {
-            width: 0.92em;
-            height: 0.82em;
+            width: 0.9em;
+            height: 0.76em;
         }
 
         .product-icon .empada-icone-wrap,
         .prod-placeholder-icon .empada-icone-wrap {
-            width: 1.16em;
-            height: 0.98em;
+            width: 1.18em;
+            height: 0.96em;
         }
 
         .prod-titulo-icone .empada-icone-wrap {
-            width: 1.08em;
-            height: 0.92em;
+            width: 1.1em;
+            height: 0.9em;
         }
 
         .menu-carrinho {
