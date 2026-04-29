@@ -1044,6 +1044,40 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
 
+        .pedido-timeline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 12px 0;
+        }
+
+        .pedido-timeline-step {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .pedido-timeline-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .pedido-timeline-step.ativo {
+            color: #fff;
+        }
+
+        .pedido-timeline-step.ativo .pedido-timeline-dot {
+            background: var(--verde);
+            border-color: var(--verde);
+            box-shadow: 0 0 12px rgba(37, 211, 102, 0.45);
+        }
+
         .checkout-total {
             color: var(--verde);
             margin-bottom: 20px;
@@ -1674,8 +1708,11 @@
                     <span class="icone" aria-hidden="true"><span class="empada-icone-wrap"><span class="empada-vapor"></span><span class="empada-icon"></span></span></span> Empadas
                 </div>
                 <div class="menu-secao">FINALIZAR</div>
+                <div class="menu-item" id="mi-meus-pedidos" style="display:none" onclick="abrirPagina('meus-pedidos')">
+                  📄 Meus Pedidos
+                </div>
                 <div class="menu-item menu-carrinho" id="mi-carrinho" onclick="abrirPagina('carrinho')">
-                    🛒 Carrinho (<span id="qtd-carrinho">0</span>)
+                  🛒 Carrinho (<span id="qtd-carrinho">0</span>)
                 </div>
             </div>
         </div>
@@ -1724,25 +1761,43 @@
 
     <!-- Modal Checkout -->
     <div id="modal-checkout" class="modal-overlay">
-        <div class="modal-box">
-            <button class="modal-fechar" onclick="fecharModal('modal-checkout')">×</button>
-            <div class="pix-icone">PIX</div>
-            <h3 class="modal-titulo">Escolha como pagar</h3>
-            <p class="modal-texto">Use a chave PIX abaixo ou solicite o pagamento no cartao pelo WhatsApp</p>
-            <div class="order-badge" id="checkout-pedido-numero">#0000</div>
-            <h2 class="checkout-total" id="checkout-valor-total">R$ 0,00</h2>
-            <p style="color: rgba(255,255,255,0.6); font-size: 12px; margin-bottom: 8px;">Chave PIX:</p>
-            <div class="pix-box" id="chave-pix-texto">68 9262-6612</div>
-            <button class="modal-btn modal-btn-cartao" onclick="solicitarPagamentoCartao()">
-                💳 PAGAR NO CARTÃO
-            </button>
-            <button class="modal-btn" onclick="copiarPix()" style="margin-bottom: 15px;">
-                📋 COPIAR CHAVE PIX
-            </button>
-            <button class="modal-btn modal-btn-whatsapp" onclick="confirmarPagamento()">
-                ✅ JÁ PAGUEI - ENVIAR COMPROVANTE
-            </button>
+      <div class="modal-box">
+        <button class="modal-fechar" onclick="fecharModal('modal-checkout')">×</button>
+        <div class="pix-icone">PIX</div>
+        <h3 class="modal-titulo">Finalizar Pedido</h3>
+        <p class="modal-texto">Informe nome, WhatsApp e a data do evento. O valor do PIX é calculado conforme o pedido, e o saldo restante vence até 4 dias antes do evento.</p>
+        <div style="text-align:left;margin-top:8px;">
+          <label class="checkout-field-label">Seu nome</label>
+          <input id="checkout-nome" class="modal-input" placeholder="Seu nome completo">
+          <label class="checkout-field-label">WhatsApp</label>
+          <input id="checkout-wpp" class="modal-input" placeholder="68999999999">
+          <label class="checkout-field-label">Data do evento</label>
+          <input id="checkout-event-date" class="modal-input" type="text" inputmode="numeric" maxlength="5" placeholder="dd/mm" autocomplete="off">
         </div>
+        <div class="order-badge" id="checkout-pedido-numero">#0000</div>
+        <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;margin:18px 0;">
+          <div style="flex:1;text-align:left;">
+          <div style="font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:6px;">Valor a pagar agora</div>
+          <div class="checkout-total" id="checkout-sinal-valor" style="font-size:28px">R$ 0,00</div>
+          </div>
+          <div style="flex:1;text-align:left;" id="checkout-saldo-box">
+          <div style="font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:6px;">Saldo restante - vence em</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.8);" id="checkout-saldo-vencimento">--/--/----</div>
+          <div style="font-size:16px;color:var(--laranja);font-weight:700;" id="checkout-saldo-valor">R$ 0,00</div>
+          </div>
+        </div>
+        <p style="color: rgba(255,255,255,0.6); font-size: 12px; margin-bottom: 8px;">Chave PIX:</p>
+        <div class="pix-box" id="chave-pix-texto">68 9262-6612</div>
+        <button class="modal-btn modal-btn-cartao" onclick="solicitarPagamentoCartao()">
+          💳 Solicitar pagamento no cartão
+        </button>
+        <button class="modal-btn" onclick="copiarPix()" style="margin-bottom: 12px;">
+          📋 Copiar chave PIX
+        </button>
+        <button class="modal-btn modal-btn-whatsapp" onclick="confirmarPagamento('sinal')">
+          ✅ Já paguei — Enviar comprovante
+        </button>
+      </div>
     </div>
 
     <div id="modal-imagem" class="modal-overlay" onclick="fecharModalImagem(event)">
@@ -1763,7 +1818,7 @@ const IMGS = window.IMGS || {};
   const CONFIG = {
     whatsapp: "68 9262-6612",
     chave_pix: "68 9262-6612",
-    url_google_script: "https://script.google.com/macros/s/AKfycbyjsTs98ijnJP4W9s2qLnVe64dWyU1DI9_-pCJaUu2CEKWM5spHTpgwL5nqbnKb35fMWw/exec",
+    url_google_script: "https://script.google.com/macros/s/AKfycbxIxHY6mAvMtScJYG6QZKZAMvsHrsTt9vYQ-f0qPnH5zJNTN5IkaO3Unb31TWhLTF9rag/exec",
     nomeAtendimento: "Assistente Petiti Buffet",
     mensagemBoasVindas: "Olá! Seja bem-vindo(a)! Como posso ajudar hoje?",
     instagram: ""
@@ -1810,16 +1865,22 @@ const IMGS = window.IMGS || {};
     },
     {
       pergunta: "Como funciona o pagamento?",
-      resposta: "O pagamento é feito via PIX ou cartao em duas partes: metade do valor total adiantado no dia da reserva e a outra metade de 7 a 3 dias antes do evento. Caso a outra metade nao seja paga, retornamos o valor. Nao trabalhamos com pagamentos pos-evento."
+      resposta: "O pagamento via PIX calcula o valor a pagar agora conforme o pedido. Sanduíches e empadas são pagos integralmente; nos demais itens, 50% fica como pagamento inicial e o saldo deve ser quitado até 4 dias antes do evento. Caso o saldo não seja pago dentro do prazo, a confirmação poderá ser cancelada. Não trabalhamos com pagamentos pós-evento."
     },
     {
       pergunta: "Quais formas de pagamento vocês aceitam?",
-      resposta: "Aceitamos PIX e tambem pagamento no cartao, combinado manualmente pelo WhatsApp apos o envio do pedido."
+      resposta: "Aceitamos PIX e também pagamento no cartão. O pagamento no cartão é tratado manualmente via WhatsApp após o envio do pedido."
     },
     {
       pergunta: "Onde vocês estão localizados e há quanto tempo trabalham com isso?",
       resposta: "Estamos localizados na Rua Pricesinha, Belo Jardim 1, e já temos mais de 4 anos de experiência nessa área."
     }
+  ];
+
+  const DEPOIMENTOS = [
+    { nome: "Mariana Silva", texto: "O atendimento foi impecável e o carrinho deixou nosso evento inesquecível." },
+    { nome: "Rafael Costa", texto: "Profissionalismo e sabor. Recomendo para festas e eventos corporativos." },
+    { nome: "Ana Pereira", texto: "Puntualidade e comida deliciosa. Meus convidados adoraram!" }
   ];
 
   let paginaAtual = "home";
@@ -1831,7 +1892,9 @@ const IMGS = window.IMGS || {};
   let estadoPrecosProdutos = {};
   let intervaloSincronizacaoCliente = null;
   let toqueMenuLateral = null;
-  const INTERVALO_POLLING_CLIENTE_MS = 15000;
+  const INTERVALO_POLLING_CLIENTE_MS = 5000;
+  const DIAS_ANTECEDENCIA_SALDO = 4;
+  const PRODUTOS_PAGAMENTO_INTEGRAL_PIX = new Set(["sanduiche", "empada"]);
   let sincronizacaoClienteEmAndamento = false;
 
 // Wireframe Animation
@@ -1989,6 +2052,13 @@ const IMGS = window.IMGS || {};
       btnUser.style.color = "white";
     }
     atualizarContadorCarrinho();
+    // mostrar menu Meus Pedidos somente depois da validação retornada pela planilha
+    try {
+      const pedidos = JSON.parse(localStorage.getItem('cg_meus_pedidos') || '[]');
+      showMeusPedidosMenu(Array.isArray(pedidos) && pedidos.some(pedidoVisivelCliente));
+    } catch (e) {
+      showMeusPedidosMenu(false);
+    }
   }
 
   function abrirModalLogin() {
@@ -2246,70 +2316,12 @@ const IMGS = window.IMGS || {};
     return houveMudanca;
   }
 
-  async function carregarEstoquePlanilhaCliente() {
-    if (!CONFIG.url_google_script) return {};
-
-    try {
-      const url = new URL(CONFIG.url_google_script);
-      url.searchParams.set("action", "getStock");
-      const resposta = await fetch(url.toString(), {
-        method: "GET",
-        cache: "no-store"
-      });
-
-      if (!resposta.ok) return {};
-      const dados = await resposta.json();
-      return dados.stock || dados.estoque || dados.data || {};
-    } catch (erro) {
-      console.error("Erro ao carregar estoque da planilha no cliente:", erro);
-      return {};
-    }
-  }
-
-  async function carregarPrecosPlanilhaCliente() {
-    if (!CONFIG.url_google_script) return {};
-
-    try {
-      const url = new URL(CONFIG.url_google_script);
-      url.searchParams.set("action", "getPrices");
-      const resposta = await fetch(url.toString(), {
-        method: "GET",
-        cache: "no-store"
-      });
-
-      if (!resposta.ok) return {};
-      const dados = await resposta.json();
-      return dados.prices || dados.precos || dados.data || {};
-    } catch (erro) {
-      console.error("Erro ao carregar preços da planilha no cliente:", erro);
-      return {};
-    }
-  }
-
   async function sincronizarClienteViaPlanilha() {
     if (sincronizacaoClienteEmAndamento) return false;
 
     sincronizacaoClienteEmAndamento = true;
     try {
-      const [estoque, precos] = await Promise.all([
-        carregarEstoquePlanilhaCliente(),
-        carregarPrecosPlanilhaCliente()
-      ]);
-
-      let estoqueMudou = false;
-      Object.keys(estoque || {}).forEach(id => {
-        const alterou = aplicarAtualizacaoEstoqueCliente({ id, disponivel: estoque[id] }, false);
-        estoqueMudou = estoqueMudou || alterou;
-      });
-
-      const precosMudaram = aplicarMapaPrecosCliente(precos || {}, false);
-      const houveMudanca = estoqueMudou || precosMudaram;
-
-      if (houveMudanca) {
-        renderizarPaginaAtualCliente();
-      }
-
-      return houveMudanca;
+      return await sincronizarPedidosCliente();
     } finally {
       sincronizacaoClienteEmAndamento = false;
     }
@@ -2504,8 +2516,19 @@ const IMGS = window.IMGS || {};
       vitrine.classList.add("full-mode");
       renderCarrinhoPagina();
 
+    } else if (id === "meus-pedidos") {
+      document.getElementById("titulo-pagina").textContent = "Meus Pedidos";
+      formChat.style.display = "none";
+      chatArea.style.display = "none";
+      vitrine.style.display = "block";
+      vitrine.classList.add("full-mode");
+      renderMeusPedidosPagina();
     } else {
       const p = PRODUTOS[id];
+      if (!p) {
+        vitrine.innerHTML = `<p>Categoria ou produto não encontrado.</p>`;
+        return;
+      }
       document.getElementById("titulo-pagina").textContent = p.nome;
       vitrine.style.display = "block";
       renderProduto(id, p);
@@ -2562,6 +2585,16 @@ const IMGS = window.IMGS || {};
     const carrinhosHTML = carrinhosIds.map(id => renderCardProduto(id, PRODUTOS[id])).join("");
     const lanchesHTML = lanchesIds.map(id => renderCardProduto(id, PRODUTOS[id])).join("");
 
+    const depoimentosHTML = DEPOIMENTOS.map(d => `
+      <div class="faq-chat-card" style="display:flex;align-items:flex-start;gap:12px;padding:18px;">
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--laranja),var(--laranja-escuro));display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:18px;">${d.nome.split(' ').map(n=>n[0]).slice(0,2).join('')}</div>
+        <div>
+          <strong style="display:block;margin-bottom:6px;color:var(--laranja);">${d.nome}</strong>
+          <div style="color:rgba(255,255,255,0.8)">${d.texto}</div>
+        </div>
+      </div>
+    `).join("");
+
     const faqHTML = FAQ_HOME.map(item => `
       <div class="faq-chat-card">
         <div class="faq-pergunta">${item.pergunta}</div>
@@ -2592,7 +2625,12 @@ const IMGS = window.IMGS || {};
           ${lanchesHTML}
         </div>
 
-        <h2 class="home-section-title" style="margin: 60px 0 40px;">Perguntas Frequentes</h2>
+        <h2 class="home-section-title" style="margin: 60px 0 40px;">Depoimentos</h2>
+        <div class="faq-chat-grid">
+          ${depoimentosHTML}
+        </div>
+
+        <h2 class="home-section-title" style="margin: 40px 0 30px;">Perguntas Frequentes</h2>
         <div class="faq-chat-grid">
           ${faqHTML}
         </div>
@@ -2878,8 +2916,20 @@ const IMGS = window.IMGS || {};
     return numeroLimpo.startsWith("55") ? numeroLimpo : `55${numeroLimpo}`;
   }
 
+  function normalizarValorMonetario(valor) {
+    if (typeof valor === "number") return Number.isFinite(valor) ? valor : 0;
+    const texto = String(valor || "").trim();
+    if (!texto) return 0;
+    let limpo = texto.replace(/[^\d,.-]/g, "");
+    if (limpo.includes(",")) {
+      limpo = limpo.replace(/\./g, "").replace(",", ".");
+    }
+    const numero = Number(limpo);
+    return Number.isFinite(numero) ? numero : 0;
+  }
+
   function formatarValorBRL(valor) {
-    return `R$ ${Number(valor || 0).toFixed(2).replace(".", ",")}`;
+    return `R$ ${normalizarValorMonetario(valor).toFixed(2).replace(".", ",")}`;
   }
 
   function escaparHtml(valor) {
@@ -2889,6 +2939,116 @@ const IMGS = window.IMGS || {};
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#39;");
+  }
+
+  function itemPagamentoIntegralPix(item) {
+    const id = String(item?.id || "").toLowerCase();
+    const nome = String(item?.nome || "").toLowerCase();
+    return PRODUTOS_PAGAMENTO_INTEGRAL_PIX.has(id)
+      || nome.includes("sanduíche")
+      || nome.includes("sanduiche")
+      || nome.includes("empada");
+  }
+
+  function obterValoresPagamentoPix() {
+    const totalPedido = normalizarValorMonetario(pedidoAtual.total);
+    const itens = Array.isArray(meuCarrinho) ? meuCarrinho : [];
+
+    if (!itens.length) {
+      const pagoAgora = Number((totalPedido * 0.5).toFixed(2));
+      return {
+        pagoAgora,
+        saldo: Number(Math.max(0, totalPedido - pagoAgora).toFixed(2)),
+        total: totalPedido
+      };
+    }
+
+    const pagoAgora = itens.reduce((soma, item) => {
+      const totalItem = normalizarValorMonetario(item.total);
+      return soma + (itemPagamentoIntegralPix(item) ? totalItem : totalItem * 0.5);
+    }, 0);
+    const pagoAgoraArredondado = Number(pagoAgora.toFixed(2));
+
+    return {
+      pagoAgora: pagoAgoraArredondado,
+      saldo: Number(Math.max(0, totalPedido - pagoAgoraArredondado).toFixed(2)),
+      total: totalPedido
+    };
+  }
+
+  function calcularSaldoVencimento(dataEvento) {
+    const data = obterDataEventoComAno(dataEvento);
+    if (!data) {
+      return "Informe a data do evento";
+    }
+    data.setDate(data.getDate() - DIAS_ANTECEDENCIA_SALDO);
+    return data.toLocaleDateString("pt-BR");
+  }
+
+  function mascararDataEvento(valor) {
+    const numeros = String(valor || "").replace(/\D/g, "").slice(0, 4);
+    if (numeros.length < 2) return numeros;
+    if (numeros.length === 2) return `${numeros}/`;
+    return `${numeros.slice(0, 2)}/${numeros.slice(2)}`;
+  }
+
+  function obterDataEventoComAno(dataEvento) {
+    const texto = String(dataEvento || "").trim();
+    let dia;
+    let mes;
+    let ano;
+
+    if (/^\d{4}-\d{2}-\d{2}$/.test(texto)) {
+      const partes = texto.split("-").map(Number);
+      ano = partes[0];
+      mes = partes[1];
+      dia = partes[2];
+    } else if (/^\d{2}\/\d{2}$/.test(texto)) {
+      const partes = texto.split("/").map(Number);
+      dia = partes[0];
+      mes = partes[1];
+      ano = new Date().getFullYear();
+    } else {
+      return null;
+    }
+
+    const data = new Date(ano, mes - 1, dia);
+    if (data.getFullYear() !== ano || data.getMonth() !== mes - 1 || data.getDate() !== dia) {
+      return null;
+    }
+
+    if (/^\d{2}\/\d{2}$/.test(texto)) {
+      const hoje = new Date();
+      hoje.setHours(0, 0, 0, 0);
+      if (data < hoje) data.setFullYear(data.getFullYear() + 1);
+    }
+
+    return data;
+  }
+
+  function formatarDataEventoDisplay(dataEvento) {
+    const texto = String(dataEvento || "").trim();
+    if (/^\d{2}\/\d{2}$/.test(texto)) return texto;
+    const data = obterDataEventoComAno(texto);
+    if (!data) return "";
+    return data.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
+  }
+
+  function calcularDiasAteEvento(dataEvento) {
+    const data = obterDataEventoComAno(dataEvento);
+    if (!data) return null;
+    const hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+    data.setHours(0, 0, 0, 0);
+    return Math.max(0, Math.ceil((data - hoje) / (1000 * 60 * 60 * 24)));
+  }
+
+  function textoSaldoVencimento(saldoValor, saldoVencimento) {
+    if (normalizarValorMonetario(saldoValor) <= 0) return "";
+    if (!saldoVencimento || saldoVencimento === "Informe a data do evento") {
+      return `${DIAS_ANTECEDENCIA_SALDO} dias antes do evento`;
+    }
+    return `${saldoVencimento} (${DIAS_ANTECEDENCIA_SALDO} dias antes)`;
   }
 
   function obterEnderecoEstruturadoSalvo() {
@@ -2963,20 +3123,50 @@ const IMGS = window.IMGS || {};
   }
 
   function abrirCheckout() {
-    if (!localStorage.getItem("cg_nomeUsuario")) {
-      alert("Por favor, faça login antes de finalizar a compra.");
-      abrirModalLogin();
-      return;
-    }
     if (!pedidoAtual.numero || !pedidoAtual.itensStr) {
       alert("Seu carrinho ainda não gerou um pedido válido.");
       return;
     }
     salvarDadosCheckoutLocal();
+    // Prefill checkout modal with name/phone (if saved) and compute parcelas
+    const nomeSalvo = localStorage.getItem("cg_nomeUsuario") || "";
+    const wppSalvo = localStorage.getItem("cg_telefoneUsuario") || "";
+    const nomeInp = document.getElementById("checkout-nome");
+    const wppInp = document.getElementById("checkout-wpp");
+    const dateInp = document.getElementById("checkout-event-date");
+    if (nomeInp) nomeInp.value = nomeSalvo;
+    if (wppInp) wppInp.value = wppSalvo;
+    if (dateInp) dateInp.value = pedidoAtual.eventDate ? formatarDataEventoDisplay(pedidoAtual.eventDate) : "";
     document.getElementById("chave-pix-texto").innerText = CONFIG.chave_pix;
     document.getElementById("checkout-pedido-numero").innerText = pedidoAtual.numero;
-    document.getElementById("checkout-valor-total").innerText = formatarValorBRL(pedidoAtual.total);
+    const valoresPagamento = obterValoresPagamentoPix();
+    const sinal = valoresPagamento.pagoAgora;
+    const saldo = valoresPagamento.saldo;
+    const elSinal = document.getElementById("checkout-sinal-valor");
+    const elSaldoBox = document.getElementById("checkout-saldo-box");
+    const elSaldo = document.getElementById("checkout-saldo-valor");
+    const elSaldoVenc = document.getElementById("checkout-saldo-vencimento");
+    if (elSinal) elSinal.innerText = formatarValorBRL(sinal);
+    if (elSaldoBox) elSaldoBox.style.display = saldo > 0 ? "block" : "none";
+    if (elSaldo) elSaldo.innerText = formatarValorBRL(saldo);
+    if (elSaldoVenc) elSaldoVenc.innerText = saldo > 0 ? calcularSaldoVencimento(dateInp?.value || "") : "";
     document.getElementById("modal-checkout").classList.add("ativo");
+
+    if (dateInp) {
+      dateInp.oninput = function () {
+        this.value = mascararDataEvento(this.value);
+        if (saldo <= 0) {
+          if (elSaldoVenc) elSaldoVenc.innerText = "";
+          return;
+        }
+        const val = this.value;
+        if (!val) {
+          if (elSaldoVenc) elSaldoVenc.innerText = "Informe a data do evento";
+          return;
+        }
+        if (elSaldoVenc) elSaldoVenc.innerText = calcularSaldoVencimento(val);
+      };
+    }
   }
 
   function copiarPix() {
@@ -3019,18 +3209,31 @@ const IMGS = window.IMGS || {};
     return meuCarrinho.map(item => `${item.nome} (${item.qtd}x)`).join(", ");
   }
 
-  function montarPayloadPedidoPlanilha(formaPagamento) {
+  function montarPayloadPedidoPlanilha(formaPagamento, etapa = 'total') {
     const dadosComplementares = obterDadosComplementaresPedido();
+    const nome = (document.getElementById('checkout-nome') && document.getElementById('checkout-nome').value.trim()) || localStorage.getItem("cg_nomeUsuario") || "Desconhecido";
+    const telefone = (document.getElementById('checkout-wpp') && document.getElementById('checkout-wpp').value.trim()) || localStorage.getItem("cg_telefoneUsuario") || "Não informado";
+    const eventDate = (document.getElementById('checkout-event-date') && document.getElementById('checkout-event-date').value) || pedidoAtual.eventDate || "";
+    const valoresPagamento = obterValoresPagamentoPix();
+    const sinal = valoresPagamento.pagoAgora;
+    const saldo = valoresPagamento.saldo;
+    const saldoVenc = saldo > 0 ? (document.getElementById('checkout-saldo-vencimento')?.innerText || calcularSaldoVencimento(eventDate)) : '';
+
     return {
       order_id: pedidoAtual.id || `pedido-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
       pedido: pedidoAtual.numero || "",
-      nome: localStorage.getItem("cg_nomeUsuario") || "Desconhecido",
-      telefone: localStorage.getItem("cg_telefoneUsuario") || "Nao informado",
+      nome: nome,
+      telefone: telefone,
       endereco: dadosComplementares.endereco || "Rua: Não informado | Número: Não informado | Bairro: Não informado | Complemento: Não informado",
       itens: montarItensPlanilha(),
       forma_pagamento: formaPagamento || "PIX",
       total: formatarValorBRL(pedidoAtual.total),
-      status: "pendente",
+      sinal_valor: formatarValorBRL(sinal),
+      saldo_valor: formatarValorBRL(saldo),
+      saldo_vencimento: saldoVenc,
+      event_date: eventDate,
+      etapa: etapa,
+      status: 'pedido recebido',
       created_at: pedidoAtual.criadoEm || new Date().toISOString()
     };
   }
@@ -3063,16 +3266,21 @@ const IMGS = window.IMGS || {};
     setTimeout(() => { form.remove(); }, 2000);
   }
 
-  function registrarPedidoNaPlanilha(formaPagamento) {
-    if (pedidoAtual.enviadoPlanilha) return;
+  function registrarPedidoNaPlanilha(formaPagamento, etapa = 'total') {
+    pedidoAtual.enviadoPlanilhaStages = pedidoAtual.enviadoPlanilhaStages || {};
+    if (pedidoAtual.enviadoPlanilhaStages[etapa]) return;
 
     try {
       const formaPagamentoFinal = formaPagamento || pedidoAtual.formaPagamento || "PIX";
       if (CONFIG.url_google_script) {
-        enviarPedidoParaPlanilha(montarPayloadPedidoPlanilha(formaPagamentoFinal));
+        enviarPedidoParaPlanilha(montarPayloadPedidoPlanilha(formaPagamentoFinal, etapa));
       }
-      pedidoAtual.enviadoPlanilha = true;
-      pedidoAtual.pagamentoInformado = true;
+      pedidoAtual.enviadoPlanilhaStages[etapa] = true;
+      if (etapa === 'sinal') {
+        pedidoAtual.sinalRegistrado = true;
+      } else {
+        pedidoAtual.pagamentoInformado = true;
+      }
       pedidoAtual.formaPagamento = formaPagamentoFinal;
       notificarNovoPedidoAdmin(formaPagamentoFinal);
     } catch (erro) {
@@ -3094,33 +3302,104 @@ const IMGS = window.IMGS || {};
     abrirPagina("home");
   }
 
-  function confirmarPagamento() {
+  function confirmarPagamento(stage = 'total') {
     if (!pedidoAtual.numero || !pedidoAtual.total) {
       alert("Seu pedido ainda não está pronto para pagamento.");
       return;
     }
-    const nomeUsuario = localStorage.getItem("cg_nomeUsuario") || "Desconhecido";
-    const telefoneUsuario = localStorage.getItem("cg_telefoneUsuario") || "Não informado";
-    const dadosComplementares = obterDadosComplementaresPedido();
-    const enderecoUsuario = dadosComplementares.endereco;
-    const enderecoEstruturado = dadosComplementares.enderecoEstruturado || {};
-    const observacaoUsuario = dadosComplementares.observacao;
-    const itensWhatsApp = montarItensWhatsApp();
-    const totalFormatado = formatarValorBRL(pedidoAtual.total);
 
-    registrarPedidoNaPlanilha("PIX");
+    const nomeCampo = document.getElementById('checkout-nome');
+    const wppCampo = document.getElementById('checkout-wpp');
+    const dataCampo = document.getElementById('checkout-event-date');
+    const nomeUsuario = (nomeCampo && nomeCampo.value.trim()) || localStorage.getItem("cg_nomeUsuario") || "Desconhecido";
+    const telefoneUsuario = (wppCampo && wppCampo.value.trim()) || localStorage.getItem("cg_telefoneUsuario") || "Não informado";
 
-    const msgWhatsApp =
-      `Olá! Já realizei o pagamento via PIX.\n\n` +
-      `Pedido: ${pedidoAtual.numero}\n` +
-      `Nome: ${nomeUsuario}\n` +
-      `Telefone: ${telefoneUsuario}\n` +
-      `Endereço:\n${montarEnderecoWhatsApp(enderecoEstruturado)}\n` +
-      `Produtos comprados:\n${itensWhatsApp}\n` +
-      `Total do carrinho: ${totalFormatado}\n\n` +
-      `Vou enviar o comprovante logo abaixo.`;
+    if (!nomeUsuario || !telefoneUsuario || telefoneUsuario === "Não informado") {
+      alert("Por favor, informe seu nome e WhatsApp para finalizar o pedido.");
+      return;
+    }
 
+    const dataEvento = (dataCampo && dataCampo.value) || pedidoAtual.eventDate || "";
+    const valoresPagamento = obterValoresPagamentoPix();
+    const sinalValor = valoresPagamento.pagoAgora;
+    const saldoValor = valoresPagamento.saldo;
+    const saldoVencimentoDisplay = saldoValor > 0
+      ? (document.getElementById('checkout-saldo-vencimento')?.innerText || calcularSaldoVencimento(dataEvento))
+      : '';
+
+    // Atualiza pedidoAtual com informações que serão enviadas
+    pedidoAtual.cliente = nomeUsuario;
+    pedidoAtual.telefone = telefoneUsuario;
+    pedidoAtual.eventDate = dataEvento;
+    pedidoAtual.sinalValor = sinalValor;
+    pedidoAtual.saldoValor = saldoValor;
+    pedidoAtual.saldoVencimento = saldoVencimentoDisplay;
+    pedidoAtual.status = "pedido recebido";
+
+    // Persistir nome/telefone localmente para conveniência
+    localStorage.setItem("cg_nomeUsuario", nomeUsuario);
+    localStorage.setItem("cg_telefoneUsuario", telefoneUsuario);
+
+    // Registrar pedido na planilha com etapa (sinal/total)
+    registrarPedidoNaPlanilha(stage === 'sinal' ? 'PIX' : 'PIX', stage === 'sinal' ? 'sinal' : 'total');
+
+    let msgWhatsApp = '';
+    if (stage === 'sinal') {
+      const linhaSaldoWhatsApp = saldoValor > 0
+        ? `Saldo: ${formatarValorBRL(saldoValor)} - ${textoSaldoVencimento(saldoValor, saldoVencimentoDisplay)}\n`
+        : "";
+      msgWhatsApp =
+        `Olá! Já realizei o pagamento via PIX.\n\n` +
+        `Pedido: ${pedidoAtual.numero}\n` +
+        `Nome: ${nomeUsuario}\n` +
+        `Telefone: ${telefoneUsuario}\n` +
+        `Data do evento: ${dataEvento || 'Não informada'}\n` +
+        `Produtos comprados:\n${montarItensWhatsApp()}\n` +
+        `Pedido pago: ${formatarValorBRL(sinalValor)}\n` +
+        linhaSaldoWhatsApp +
+        `\n` +
+        `Vou enviar o comprovante logo abaixo.`;
+    } else {
+      msgWhatsApp =
+        `Olá! Já realizei o pagamento via PIX.\n\n` +
+        `Pedido: ${pedidoAtual.numero}\n` +
+        `Nome: ${nomeUsuario}\n` +
+        `Telefone: ${telefoneUsuario}\n` +
+        `Endereço:\n${montarEnderecoWhatsApp(pedidoAtual.enderecoEstruturado || {})}\n` +
+        `Produtos comprados:\n${montarItensWhatsApp()}\n` +
+        `Total do carrinho: ${formatarValorBRL(pedidoAtual.total)}\n\n` +
+        `Vou enviar o comprovante logo abaixo.`;
+    }
+
+    // Salva pedido localmente para a aba "Meus Pedidos"
+    saveLocalOrder({
+      id: pedidoAtual.id,
+      numero: pedidoAtual.numero,
+      cliente: pedidoAtual.cliente,
+      telefone: pedidoAtual.telefone,
+      itens: pedidoAtual.itensStr || montarItensPlanilha(),
+      total: pedidoAtual.total,
+      sinalValor: pedidoAtual.sinalValor,
+      saldoValor: pedidoAtual.saldoValor,
+      saldoVencimento: pedidoAtual.saldoVencimento,
+      eventDate: pedidoAtual.eventDate,
+      status: pedidoAtual.status,
+      pagamentoValidado: true,
+      origemLocal: true,
+      etapa: stage === 'sinal' ? 'sinal' : 'total',
+      criadoEm: new Date().toISOString()
+    });
+
+    // Abrir WhatsApp e finalizar fluxo (o pedido já foi registrado localmente e enviado para a planilha)
     concluirPedidoViaWhatsApp(msgWhatsApp);
+
+    showMeusPedidosMenu(true);
+
+    // Abre a aba localmente após o comprovante; o polling atualiza os status da planilha em seguida.
+    setTimeout(() => {
+      abrirPagina('meus-pedidos');
+      sincronizarPedidosCliente();
+    }, 600);
   }
 
   function solicitarPagamentoCartao() {
@@ -3154,6 +3433,202 @@ const IMGS = window.IMGS || {};
     if (!arquivo) return;
     alert("Envio de foto ainda não está ativo nesta versão.");
     event.target.value = "";
+  }
+
+  function saveLocalOrder(order) {
+    try {
+      const lista = JSON.parse(localStorage.getItem('cg_meus_pedidos') || '[]');
+      const pedidoLocal = Object.assign({ origemLocal: true }, order);
+      const idx = lista.findIndex(o => (o.id && order.id && o.id === order.id) || (o.numero && order.numero && o.numero === order.numero));
+      if (idx >= 0) {
+        lista[idx] = Object.assign({}, lista[idx], pedidoLocal, { origemLocal: true });
+      } else {
+        lista.unshift(pedidoLocal);
+      }
+      localStorage.setItem('cg_meus_pedidos', JSON.stringify(lista));
+    } catch (e) {
+      console.error('Erro ao salvar pedido localmente', e);
+    }
+  }
+
+  function showMeusPedidosMenu(show) {
+    const el = document.getElementById('mi-meus-pedidos');
+    if (!el) return;
+    el.style.display = show ? 'block' : 'none';
+  }
+
+  function pagamentoValidadoPedido(pedido) {
+    if (!pedido) return false;
+    const valor = pedido.pagamentoValidado ?? pedido.pagamento_validado;
+    return valor === true || valor === 1 || String(valor).trim().toLowerCase() === "true";
+  }
+
+  function pedidoPertenceAoDispositivo(pedido) {
+    if (!pedido) return false;
+    return pedido.origemLocal === true
+      || normalizarValorMonetario(pedido.sinalValor) > 0
+      || normalizarValorMonetario(pedido.saldoValor) > 0;
+  }
+
+  function pedidoVisivelCliente(pedido) {
+    return pagamentoValidadoPedido(pedido) && pedidoPertenceAoDispositivo(pedido);
+  }
+
+  function normalizarItensPedidoCliente(itens) {
+    if (Array.isArray(itens)) {
+      return itens.map(item => {
+        if (typeof item === "string") return item;
+        const nome = item && item.nome ? item.nome : "";
+        const qtd = item && item.qtd ? ` (${item.qtd}x)` : "";
+        return `${nome}${qtd}`;
+      }).filter(Boolean).join(", ");
+    }
+    return String(itens || "");
+  }
+
+  function obterStatusPedidoCliente(pedido) {
+    return String(pedido.statusAtual || pedido.status_atual || pedido.status || "pedido recebido").trim() || "pedido recebido";
+  }
+
+  function obterTimelinePedidoCliente(pedido) {
+    if (Array.isArray(pedido.timeline) && pedido.timeline.length) {
+      return pedido.timeline.map(step => ({
+        label: String(step.label || "").trim(),
+        active: step.active === true
+      })).filter(step => step.label);
+    }
+
+    const status = obterStatusPedidoCliente(pedido).toLowerCase();
+    const prontoLabel = /lanche/.test(status)
+      ? "Lanche Pronto!"
+      : (/carrinho|alimentos/.test(status) ? "Carrinhos Reservados e Alimentos Prontos!" : "Pedido Pronto!");
+
+    return [
+      { label: "Pedido Recebido", active: true },
+      { label: "Pedido em Preparo", active: /preparo|pronto|caminho|reservados/.test(status) },
+      { label: prontoLabel, active: /pronto|caminho|reservados/.test(status) },
+      { label: "A Caminho", active: /caminho/.test(status) }
+    ];
+  }
+
+  function renderTimelinePedidoHTML(pedido) {
+    const steps = obterTimelinePedidoCliente(pedido);
+    return `<div class="pedido-timeline">${steps.map(step => (
+      `<div class="pedido-timeline-step ${step.active ? 'ativo' : ''}"><span class="pedido-timeline-dot"></span><span>${escaparHtml(step.label)}</span></div>`
+    )).join("")}</div>`;
+  }
+
+  function renderMeusPedidosPagina() {
+    const vitrine = document.getElementById('vitrine');
+    if (!vitrine) return;
+    const pedidos = JSON.parse(localStorage.getItem('cg_meus_pedidos') || '[]').filter(pedidoVisivelCliente);
+    if (!pedidos.length) {
+      vitrine.innerHTML = `<h1 class="home-titulo" style="text-align:left;margin-bottom:20px;">📦 Meus Pedidos</h1><p>Seus pedidos aparecem aqui após a validação do pagamento na planilha.</p>`;
+      return;
+    }
+    let html = `<h1 class="home-titulo" style="text-align:left;margin-bottom:20px;">📦 Meus Pedidos</h1>`;
+    pedidos.forEach(p => {
+      const eventDateDisplay = formatarDataEventoDisplay(p.eventDate);
+      const diasRestantes = calcularDiasAteEvento(p.eventDate);
+      html += `<div class="faq-chat-card" style="margin-bottom:12px;padding:18px;">`;
+      html += `<div style="display:flex;justify-content:space-between;align-items:center;"><div><strong>Pedido ${escaparHtml(p.numero)}</strong><div style="font-size:13px;color:rgba(255,255,255,0.7)">${escaparHtml(p.itens)}</div></div><div style="text-align:right"><div style="font-weight:800;color:var(--laranja)">${formatarValorBRL(p.total || 0)}</div><div style="font-size:12px;color:rgba(255,255,255,0.6)">${escaparHtml(eventDateDisplay)}</div></div></div>`;
+      html += `<div style="margin-top:12px;">`;
+      const status = obterStatusPedidoCliente(p);
+      html += `<div style="margin-bottom:8px;"><strong>Status:</strong> ${escaparHtml(status)}</div>`;
+      html += renderTimelinePedidoHTML(p);
+      if (p.etapa === 'sinal' || p.sinalValor || p.saldoValor) {
+        const saldoValor = normalizarValorMonetario(p.saldoValor || 0);
+        const saldoVencimento = p.saldoVencimento || '';
+        const valorComprovante = saldoValor > 0 ? saldoValor : normalizarValorMonetario(p.sinalValor || p.total || 0);
+        html += `<div style="margin-bottom:6px;"><strong>pedido pago:</strong> ${formatarValorBRL(p.sinalValor || 0)}</div>`;
+        if (saldoValor > 0) {
+          html += `<div style="margin-bottom:6px;"><strong>Saldo:</strong> ${formatarValorBRL(saldoValor)} — ${textoSaldoVencimento(saldoValor, saldoVencimento)}</div>`;
+        }
+        html += `<div style="display:flex;gap:8px;margin-top:8px;">`;
+        html += `<button class="modal-btn modal-btn-whatsapp" onclick="enviarComprovanteTransferenciaWhatsApp(${JSON.stringify(String(p.numero || ""))}, ${valorComprovante})">Enviar comprovante de transferência</button>`;
+        html += `</div>`;
+      }
+      if (diasRestantes !== null) {
+        html += `<div style="margin-bottom:8px;color:rgba(255,255,255,0.8)"><strong>Faltam ${diasRestantes} dias para o seu evento</strong></div>`;
+      }
+      html += `</div></div>`;
+    });
+    vitrine.innerHTML = html;
+  }
+
+  function enviarComprovanteTransferenciaWhatsApp(numeroPedido, valor) {
+    const texto = `Olá! Estou enviando o comprovante de transferência para o pedido ${numeroPedido}. Valor: ${formatarValorBRL(valor)}. Por favor, confirme o recebimento.`;
+    const url = `https://wa.me/${obterWhatsappLink()}?text=${encodeURIComponent(texto)}`;
+    window.open(url, '_blank');
+  }
+
+  async function carregarMeusPedidosPlanilhaCliente() {
+    if (!CONFIG.url_google_script) return [];
+    const telefone = localStorage.getItem('cg_telefoneUsuario') || '';
+    try {
+      const url = new URL(CONFIG.url_google_script);
+      url.searchParams.set('action','getOrders');
+      if (telefone) url.searchParams.set('telefone', telefone);
+      const resposta = await fetch(url.toString(), { method: 'GET', cache: 'no-store' });
+      if (!resposta.ok) return [];
+      const data = await resposta.json();
+      return data.orders || data.data || [];
+    } catch(e) {
+      console.error(e);
+      return [];
+    }
+  }
+
+  async function sincronizarPedidosCliente() {
+    try {
+      const orders = await carregarMeusPedidosPlanilhaCliente();
+      const locais = JSON.parse(localStorage.getItem('cg_meus_pedidos')||'[]').filter(pedidoPertenceAoDispositivo);
+      let mudou = false;
+
+      orders.forEach(o => {
+        const orderId = o.order_id || o.id || o.pedido || o.numero || '';
+        const pedidoNumero = o.pedido || o.order || o.numero || orderId || '';
+        const idx = locais.findIndex(l => (l.id && orderId && l.id === orderId) || (l.numero && pedidoNumero && l.numero === pedidoNumero));
+        if (idx < 0) return;
+
+        const anterior = idx >= 0 ? locais[idx] : {};
+        const novo = {
+          id: orderId || anterior.id || `pedido-${Math.random().toString(36).slice(2,8)}`,
+          numero: pedidoNumero,
+          cliente: o.nome || anterior.cliente || localStorage.getItem('cg_nomeUsuario') || '',
+          telefone: o.telefone || anterior.telefone || localStorage.getItem('cg_telefoneUsuario') || '',
+          itens: normalizarItensPedidoCliente(o.itens || anterior.itens || ''),
+          total: o.total || anterior.total || 0,
+          sinalValor: o.sinal_valor || anterior.sinalValor || 0,
+          saldoValor: o.saldo_valor || anterior.saldoValor || 0,
+          saldoVencimento: o.saldo_vencimento || anterior.saldoVencimento || '',
+          eventDate: o.event_date || anterior.eventDate || '',
+          status: o.status_atual || o.status || anterior.status || 'pedido recebido',
+          statusAtual: o.status_atual || o.status || anterior.statusAtual || anterior.status || 'pedido recebido',
+          statusPrincipal: o.status_principal || anterior.statusPrincipal || '',
+          fasePreparo: o.fase_preparo || anterior.fasePreparo || '',
+          entregaFinalizacao: o.entrega_finalizacao || anterior.entregaFinalizacao || '',
+          timeline: Array.isArray(o.timeline) ? o.timeline : (anterior.timeline || []),
+          pagamentoValidado: pagamentoValidadoPedido(o),
+          origemLocal: anterior.origemLocal === true || pedidoPertenceAoDispositivo(anterior),
+          criadoEm: o.created_at || anterior.criadoEm || new Date().toISOString(),
+          atualizadoEm: o.updated_at || anterior.atualizadoEm || ''
+        };
+
+        const anteriorJson = idx >= 0 ? JSON.stringify(locais[idx]) : "";
+        const novoJson = JSON.stringify(novo);
+        locais[idx] = novo;
+        mudou = mudou || anteriorJson !== novoJson;
+      });
+
+      localStorage.setItem('cg_meus_pedidos', JSON.stringify(locais));
+      showMeusPedidosMenu(locais.some(pedidoVisivelCliente));
+      if (paginaAtual === 'meus-pedidos') renderMeusPedidosPagina();
+      return mudou;
+    } catch (err) {
+      console.error('Erro ao carregar pedidos da planilha:', err);
+      return false;
+    }
   }
 
   window.onload = () => {
